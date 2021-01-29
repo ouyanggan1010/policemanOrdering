@@ -1,19 +1,19 @@
 <template>
   <div class="home">
-    <div><span class="iconfont icon-shouye"></span>Home</div>
-    <VanCalendar msg="Welcome to Your Vue.js App" />
+    home
+    <router-link to="/login">跳转到登录页</router-link>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import VanCalendar from "@/components/VanCalendar.vue";
-
 export default {
   name: "Home",
-  components: {
-    VanCalendar,
+  data() {
+    return {
+      
+    };
   },
+  components: {},
   methods: {},
   mounted() {},
 };

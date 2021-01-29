@@ -20,12 +20,15 @@ import mixin from "./mixin";
 Vue.mixin(mixin);
 
 // -------------------按需引入组件
-import { Button, Picker,Field,Popup,Calendar } from "vant";
+import { Button, Picker,Field,Popup,Calendar,Tabbar, TabbarItem,NavBar } from "vant";
 Vue.use(Button);
 Vue.use(Picker);
 Vue.use(Field);
 Vue.use(Popup);
 Vue.use(Calendar);
+Vue.use(Tabbar);
+Vue.use(TabbarItem);
+Vue.use(NavBar);
 
 Vue.config.productionTip = false;
 

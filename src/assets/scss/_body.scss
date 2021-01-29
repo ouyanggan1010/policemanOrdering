@@ -1,0 +1,56 @@
+﻿@charset "utf-8";
+
+// ------------------------这些样式重置，如果在需要引入整个外部UI框架的时候，可以根据自定义删改
+body {
+    background-color: #eef1f6;
+}
+body,
+html {
+    width: 100%;
+    height: 100%;
+}
+// ------------------------结束
+
+/* 加粗 */
+
+.fwb {
+    font-weight: bold;
+}
+
+/*被访问过链接*/
+
+a {
+    &:link,
+    &:visited,
+    &:hover,
+    &:active {
+        text-decoration: none;
+        color: #000000;
+    }
+}
+
+//一行省略
+.overOne {
+    @include overell;
+}
+
+//换行，文字与单词换行
+
+//指定如果足够长得话，应该换行，尽量不拆分单词
+.wpword {
+    word-wrap:break-word;
+}
+// 不管单词的完整性，拆分单词换行
+.wbword {
+    word-break: break-word;
+}
+
+//手型
+.curp {
+    cursor: pointer;
+}
+
+// 清除浮动
+.clear {
+    @include clearfix;
+}

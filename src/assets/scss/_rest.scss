@@ -19,7 +19,7 @@
 //生成字体大小
 $fonts: 12;
 @while $fonts < 100 {
-    .mycss-fs-#{$fonts} {
+    .fs-#{$fonts} {
         font-size: $fonts * $base-size;
     }
     $fonts: $fonts + 2;
@@ -81,29 +81,29 @@ $flexWraps: (
 
 //------------------------------spacing
 //.mt-0 => margin-top level 0
-$mpsize: 5;
+$mpsize: 2;
 @while $mpsize < 100 {
     @each $typeKey, $type in $spacing-types {
-        .mycss-#{$typeKey}-#{$mpsize} {
+        .#{$typeKey}-#{$mpsize} {
             #{$type}: $mpsize * $base-size;
         }
         // mx- my-
-        .mycss-#{$typeKey}x-#{$mpsize} {
+        .#{$typeKey}x-#{$mpsize} {
             #{$type}-left: $mpsize * $base-size;
             #{$type}-right: $mpsize * $base-size;
         }
-        .mycss-#{$typeKey}y-#{$mpsize} {
+        .#{$typeKey}y-#{$mpsize} {
             #{$type}-top: $mpsize * $base-size;
             #{$type}-bottom: $mpsize * $base-size;
         }
         // .mt-0{margin-top: 0px}
         @each $directionKey, $direction in $spacing-directions {
-            .mycss-#{$typeKey}#{$directionKey}-#{$mpsize} {
+            .#{$typeKey}#{$directionKey}-#{$mpsize} {
                 #{$type}-#{$direction}: $mpsize * $base-size;
             }
         }
     }
-    $mpsize: $mpsize + 5;
+    $mpsize: $mpsize + 2;
 }
 //------------------------------display
 $displays: (
@@ -162,13 +162,13 @@ $whPer: (1, 2, 3, 4, 5);
 //------------------------------line-height
 $lineH: 10;
 @while $lineH < 100 {
-    .mycss-lineH-#{$lineH} {
+    .lineH-#{$lineH} {
         line-height: $lineH * $base-size;
     }
-    .mycss-heightDiv-#{$lineH} {
+    .heightDiv-#{$lineH} {
         height: $lineH * $base-size;
     }
-    $lineH: $lineH + 5;
+    $lineH: $lineH + 2;
 }
 //------------------------------box-sizing
 $boxSizing: (
@@ -178,5 +178,16 @@ $boxSizing: (
 @each $key, $var in $boxSizing {
     .box-#{$key} {
         box-sizing: $var;
+    }
+}
+
+//------------------------------font-weight
+$fontWeight: (
+    "5": 500,
+    "6": 600,
+);
+@each $key, $var in $fontWeight {
+    .fw-#{$key} {
+        font-weight: $var;
     }
 }

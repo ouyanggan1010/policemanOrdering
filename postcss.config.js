@@ -5,9 +5,8 @@ module.exports = ({ file }) => {
   if (file && file.dirname && file.dirname.indexOf('vant') > -1) {
     remUnit = 37.5
   } else {
-    remUnit = 75
+    remUnit = 108
   }
-  console.log('00oo-------',file.dirname)
   return {
     plugins: [
       autoprefixer(),

@@ -1,0 +1,66 @@
+@charset "utf-8";
+
+[class*="myIcon-"] {
+    display: inline-block;
+    background: url('../images/sprite.jpg') no-repeat;
+    background-size: 1080px;
+}
+/*---------------------------------------------首页图标---------------------------------------*/ 
+/*------------首页-政策法规-----------*/ 
+.myIcon-policies{
+    @include appicon(0, 0, 121px, 121px)
+}
+/*------------首页-通知公告-----------*/ 
+.myIcon-notice{
+    @include appicon(-143px, 0, 121px, 121px)
+}
+/*------------首页-强农惠农-----------*/ 
+.myIcon-farmer{
+    @include appicon(-286px, 0, 121px, 121px)
+}
+/*------------首页-应急管理-----------*/ 
+.myIcon-emergency{
+    @include appicon(-428px, 0, 121px, 121px)
+}
+/*------------首页-农产品价格-----------*/ 
+.myIcon-agriculturalPrice{
+    @include appicon(-713px, 0, 120px, 120px)
+}
+/*------------首页-农产品检测-----------*/ 
+.myIcon-agriculturalTesting{
+    @include appicon(-571px, 0, 120px, 120px)
+}
+/*------------首页-日期-----------*/ 
+.myIcon-date{
+    @include appicon(-855px, 0, 33px, 33px)
+}
+
+/*---------------------------------------------尾部图标---------------------------------------*/ 
+/*------------尾部-首页-----------*/ 
+.myIcon-footIndexG{
+    @include appicon(0, -128px, 60px, 55px)
+}
+.myIcon-footIndexB{
+    @include appicon(-79px, -128px, 60px, 55px)
+}
+/*------------尾部-服务-----------*/ 
+.myIcon-footServiceG{
+    @include appicon(-158px, -128px, 57px, 57px)
+}
+.myIcon-footServiceB{
+    @include appicon(-234px, -128px, 57px, 57px)
+}
+/*------------尾部-问答-----------*/ 
+.myIcon-footQaG{
+    @include appicon(-310px, -128px, 59px, 57px)
+}
+.myIcon-footQaB{
+    @include appicon(-388px, -128px, 59px, 57px)
+}
+/*------------尾部-我的-----------*/ 
+.myIcon-footMyG{
+    @include appicon(-466px, -128px, 52px, 49px)
+}
+.myIcon-footMyB{
+    @include appicon(-537px, -128px, 52px, 49px)
+}

@@ -25,14 +25,6 @@
 //icon
 
 /*图标*/
-
-@mixin icon($url) {
-    [class*="mycss-icon-"] {
-        display: inline-block;
-        background: url($url) no-repeat;
-    }
-}
-
 @mixin appicon($left, $top, $width, $height) {
     background-position: $left $top;
     width: $width;

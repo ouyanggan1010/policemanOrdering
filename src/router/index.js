@@ -8,22 +8,51 @@ const routes = [
     name: "App",
     redirect: "/home"
   },
+  // 首页
   {
     path: "/home",
     name: "Home",
     component: () => import("../views/Home.vue"),
     meta: {
       footShow: true,
+      headShow: true,
+      headTitle: "现代农业服务平台"
     },
   },
+  // 服务
   {
-    path: "/preOrder",
-    name: "PreOrder",
-    component: () => import("../views/PreOrder.vue"),
+    path: "/service",
+    name: "Service",
+    component: () => import("../views/Service.vue"),
     meta: {
       footShow: true,
+      headShow: true,
+      headTitle: "服务"
     },
   },
+  // 问答
+  {
+    path: "/qa",
+    name: "Qa",
+    component: () => import("../views/Qa.vue"),
+    meta: {
+      footShow: true,
+      headShow: true,
+      headTitle: "问答"
+    },
+  },
+  // 我的
+  {
+    path: "/my",
+    name: "My",
+    component: () => import("../views/My.vue"),
+    meta: {
+      footShow: true,
+      headShow: true,
+      headTitle: "我的"
+    },
+  },
+  // 登录
   {
     path: "/login",
     name: "Login",

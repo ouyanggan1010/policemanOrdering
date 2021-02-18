@@ -1,16 +1,33 @@
 <template>
   <div id="app">
-    <!-- 头部导航栏 -->
+    <!-- 头部导航栏 @click-left="$router.back()" -->
     <van-nav-bar
       :title="$route.meta.headTitle"
       fixed
       placeholder
-      @click-left="$router.back()"
       v-if="$route.meta.headShow"
     >
-      <!-- 自定义返回图标 -->
-      <template #left>
-        <span class="iconfont icon-tupian mycss-fs-40 text-black"></span>
+      <!-- 自定义左侧图标 -->
+      <!-- 首页 -->
+      <template #left v-if="$route.name === 'Home'">
+        <!-- 未登录的状态 -->
+        <router-link
+          to="/login"
+          tag="div"
+          v-if="loginNoOrYes"
+          class="text-white fs-32"
+          >登录/注册</router-link
+        >
+        <!-- 已登录的状态 -->
+        <router-link to="/my" tag="div" v-else class="homeLeft avatar">
+          <van-image
+            width="100%"
+            height="100%"
+            fit="cover"
+            round
+            :src="users.avatar"
+          />
+        </router-link>
       </template>
     </van-nav-bar>
     <!-- 路由切换 -->
@@ -22,25 +39,37 @@
       placeholder
       v-model="active"
       v-if="$route.meta.footShow"
-      active-color="#ee0a24"
-      inactive-color="#000"
+      active-color="#239688"
+      inactive-color="#c8c8c8"
     >
-      <van-tabbar-item replace to="/home" name="home" icon="home-o"
+      <van-tabbar-item replace to="/home" name="home"
         >首页
         <template #icon="props">
-          <span
-            v-if="props.active"
-            class="iconfont icon-tupian mycss-fs-40 text-black"
-          ></span>
-          <span
-            v-else
-            class="iconfont icon-sousuo mycss-fs-40 text-black"
-          ></span>
+          <span v-if="props.active" class="myIcon-footIndexB"></span>
+          <span v-else class="myIcon-footIndexG"></span>
         </template>
       </van-tabbar-item>
-      <van-tabbar-item replace to="/preOrder" name="preOrder" icon="search"
-        >预订餐</van-tabbar-item
-      >
+      <van-tabbar-item replace to="/service" name="service"
+        >服务
+        <template #icon="props">
+          <span v-if="props.active" class="myIcon-footServiceB"></span>
+          <span v-else class="myIcon-footServiceG"></span>
+        </template>
+      </van-tabbar-item>
+      <van-tabbar-item replace to="/qa" name="qa"
+        >问答
+        <template #icon="props">
+          <span v-if="props.active" class="myIcon-footQaB"></span>
+          <span v-else class="myIcon-footQaG"></span>
+        </template>
+      </van-tabbar-item>
+      <van-tabbar-item replace to="/my" name="my"
+        >我的
+        <template #icon="props">
+          <span v-if="props.active" class="myIcon-footMyB"></span>
+          <span v-else class="myIcon-footMyG"></span>
+        </template>
+      </van-tabbar-item>
     </van-tabbar>
   </div>
 </template>
@@ -50,14 +79,20 @@ export default {
   name: "App",
   data() {
     return {
-      active: "home",
+      active: "home"
     };
   },
   components: {},
+  computed: {},
   methods: {},
   mounted() {},
 };
 </script>
 
-<style>
+<style lang="scss" rel="stylesheet/scss">
+#app {
+  .van-nav-bar__title {
+    font-weight: 600;
+  }
+}
 </style>

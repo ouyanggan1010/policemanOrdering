@@ -8,18 +8,15 @@
       v-if="$route.meta.headShow"
     >
       <!-- 自定义左侧图标 -->
-      <!-- 首页 -->
+      <!-------------------------------- 首页 --------------------------------->
       <template #left v-if="$route.name === 'Home'">
-        <!-- 未登录的状态 -->
+        <!-- 已登录的状态 -->
         <router-link
-          to="/login"
+          to="/my"
           tag="div"
           v-if="loginNoOrYes"
-          class="text-white fs-32"
-          >登录/注册</router-link
+          class="homeLeft avatar"
         >
-        <!-- 已登录的状态 -->
-        <router-link to="/my" tag="div" v-else class="homeLeft avatar">
           <van-image
             width="100%"
             height="100%"
@@ -28,6 +25,10 @@
             :src="users.avatar"
           />
         </router-link>
+        <!-- 未登录的状态 -->
+        <router-link to="/login" tag="div" v-else class="text-white fs-32"
+          >登录/注册</router-link
+        >
       </template>
     </van-nav-bar>
     <!-- 路由切换 -->
@@ -79,7 +80,7 @@ export default {
   name: "App",
   data() {
     return {
-      active: "home"
+      active: "home",
     };
   },
   components: {},

@@ -2,7 +2,7 @@
 
 [class*="myIcon-"] {
     display: inline-block;
-    background: url('../images/sprite.jpg') no-repeat;
+    background: url('../images/sprite.png') no-repeat;
     background-size: 1080px;
 }
 /*---------------------------------------------首页图标---------------------------------------*/ 
@@ -63,4 +63,14 @@
 }
 .myIcon-footMyB{
     @include appicon(-537px, -128px, 52px, 49px)
+}
+
+/*---------------------------------------------登录图标---------------------------------------*/ 
+/*------------登录页-用户名-----------*/ 
+.myIcon-loginUser{
+    @include appicon(-608px, -128px, 43px, 64px)
+}
+/*------------登录页-密码-----------*/ 
+.myIcon-loginPassWord{
+    @include appicon(-662px, -128px, 44px, 58px)
 }

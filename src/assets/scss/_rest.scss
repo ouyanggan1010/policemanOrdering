@@ -81,8 +81,8 @@ $flexWraps: (
 
 //------------------------------spacing
 //.mt-0 => margin-top level 0
-$mpsize: 2;
-@while $mpsize < 100 {
+$mpsize: 0;
+@while $mpsize < 150 {
     @each $typeKey, $type in $spacing-types {
         .#{$typeKey}-#{$mpsize} {
             #{$type}: $mpsize * $base-size;

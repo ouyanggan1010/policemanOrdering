@@ -31,7 +31,7 @@ module.exports = {
   },
   chainWebpack: (config) => {
     config.plugin("html").tap((args) => {
-      args[0].title = "微食堂";
+      args[0].title = "现代农业服务平台";
       return args;
     });
   },

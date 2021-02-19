@@ -62,6 +62,26 @@ const routes = [
       headTitle: "登录"
     },
   },
+  // 注册
+  {
+    path: "/register",
+    name: "Register",
+    component: () => import("../views/Register.vue"),
+    meta: {
+      headShow: true,
+      headTitle: "注册"
+    },
+  },
+  // 找回密码
+  {
+    path: "/retrievePassword",
+    name: "RetrievePassword",
+    component: () => import("../views/RetrievePassword.vue"),
+    meta: {
+      headShow: true,
+      headTitle: "找回密码"
+    },
+  },
 ];
 
 const router = new VueRouter({

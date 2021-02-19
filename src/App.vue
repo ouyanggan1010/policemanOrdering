@@ -8,27 +8,8 @@
       v-if="$route.meta.headShow"
     >
       <!-- 自定义左侧图标 -->
-      <!-------------------------------- 首页 --------------------------------->
-      <template #left v-if="$route.name === 'Home'">
-        <!-- 已登录的状态 -->
-        <router-link
-          to="/my"
-          tag="div"
-          v-if="loginNoOrYes"
-          class="homeLeft avatar"
-        >
-          <van-image
-            width="100%"
-            height="100%"
-            fit="cover"
-            round
-            :src="users.avatar"
-          />
-        </router-link>
-        <!-- 未登录的状态 -->
-        <router-link to="/login" tag="div" v-else class="text-white fs-32"
-          >登录/注册</router-link
-        >
+      <template #left>
+        <NavBarLeft></NavBarLeft>
       </template>
     </van-nav-bar>
     <!-- 路由切换 -->
@@ -76,6 +57,7 @@
 </template>
 
 <script>
+import NavBarLeft from "./components/NavBarLeft.vue"
 export default {
   name: "App",
   data() {
@@ -83,7 +65,9 @@ export default {
       active: "home",
     };
   },
-  components: {},
+  components: {
+    NavBarLeft
+  },
   computed: {},
   methods: {},
   mounted() {},

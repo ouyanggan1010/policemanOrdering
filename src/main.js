@@ -20,7 +20,28 @@ import mixin from "./mixin";
 Vue.mixin(mixin);
 
 // -------------------按需引入组件
-import {Tabbar, TabbarItem,NavBar,Image as VanImage,Swipe, SwipeItem,Lazyload,Grid, GridItem } from "vant";
+import {
+  Button,
+  Tabbar,
+  TabbarItem,
+  NavBar,
+  Image as VanImage,
+  Swipe,
+  SwipeItem,
+  Lazyload,
+  Grid,
+  GridItem,
+  Form,
+  Field,
+  Cell,
+  CellGroup,
+  Checkbox,
+  CheckboxGroup,
+  Toast,
+  CountDown,
+  Popup
+} from "vant";
+Vue.use(Button);
 Vue.use(Tabbar);
 Vue.use(TabbarItem);
 Vue.use(NavBar);
@@ -30,6 +51,17 @@ Vue.use(SwipeItem);
 Vue.use(Lazyload);
 Vue.use(Grid);
 Vue.use(GridItem);
+Vue.use(Form);
+Vue.use(Field);
+Vue.use(Cell);
+Vue.use(CellGroup);
+Vue.use(Checkbox);
+Vue.use(CheckboxGroup);
+Vue.use(CountDown);
+Vue.use(Toast);
+Vue.use(Popup);
+
+Vue.prototype.$Toast = Toast;
 
 Vue.config.productionTip = false;
 

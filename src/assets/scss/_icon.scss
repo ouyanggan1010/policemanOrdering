@@ -96,3 +96,51 @@
 .myIcon-loginPassWord{
     @include appicon(-662px, -128px, 44px, 58px)
 }
+
+/*---------------------------------------------我的图标---------------------------------------*/ 
+/*------------灰色右箭头-----------*/ 
+.myIcon-myArrowG{
+    @include appicon(-800px, -140px, 27px, 50px)
+}
+/*------------实名认证-----------*/ 
+.myIcon-myVerified{
+    @include appicon(-903px, -40px, 65px, 61px)
+}
+/*------------我的问答-----------*/ 
+.myIcon-myQa{
+    @include appicon(-983px, -45px, 57px, 56px)
+}
+/*------------系统设置-----------*/ 
+.myIcon-mySystemSet{
+    @include appicon(-732px, -137px, 57px, 55px)
+}
+
+/*---------------------------------------------实名认证图标---------------------------------------*/ 
+/*------------照相机-----------*/ 
+.myIcon-verifiedCamera{
+    @include appicon(-738px, -196px, 188px, 188px)
+}
+/*------------直角上左-----------*/ 
+.myIcon-verifiedAngleTL{
+    @include appicon(-932px, -198px, 29px, 29px)
+}
+/*------------直角下左-----------*/ 
+.myIcon-verifiedAngleBL{
+    @include appicon(-932px, -240px, 29px, 29px)
+}
+/*------------直角上右-----------*/ 
+.myIcon-verifiedAngleTR{
+    @include appicon(-971px, -198px, 29px, 29px)
+}
+/*------------直角下右-----------*/ 
+.myIcon-verifiedAngleBR{
+    @include appicon(-971px, -240px, 29px, 29px)
+}
+/*------------成功勾-----------*/ 
+.myIcon-verifiedHookY{
+    @include appicon(-932px, -282px, 56px, 56px)
+}
+/*------------失败勾-----------*/ 
+.myIcon-verifiedHookN{
+    @include appicon(-932px, -342px, 54px, 54px)
+}

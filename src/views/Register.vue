@@ -12,7 +12,7 @@
           :rules="[
             { required: true, message: '请填写手机号' },
             {
-              pattern: /^1(?:3\d|4[4-9]|5[0-35-9]|6[67]|7[013-8]|8\d|9\d)\d{8}$/,
+              pattern: patternPhone,
               message: '手机号格式不正确',
             },
           ]"
@@ -31,6 +31,7 @@
               color="#00b96b"
               v-show="!sendCodeBool"
               @click="sendCode"
+              native-type="button"
               >发送验证码</van-button
             >
             <van-count-down
@@ -58,7 +59,7 @@
           :rules="[
             { required: true, message: '请填写密码' },
             {
-              pattern: /(?=.*([a-zA-Z].*))(?=.*[0-9].*)[a-zA-Z0-9-*/+.~!@#$%^&*()]{6,16}$/,
+              pattern: patternPassword,
               message: '密码格式不正确',
             },
           ]"
@@ -102,16 +103,34 @@
         </van-checkbox>
         <div class="d-flex fs-36 ml-26">
           <span class="text-black-31">我已阅读并同意</span>
-          <router-link tag="span" to="" class="text-green-88"
+          <router-link tag="span" to="/registerPact" class="text-green-88"
             >使用协议和隐私政策</router-link
           >
         </div>
       </div>
     </van-form>
     <!-- 验证码发送成功弹框 -->
-    <SimpleBox :show="sendCodeBool" textStr="验证码发送成功" status="code"></SimpleBox>
+    <SimpleBox
+      :objBox="{
+        show: sendCodeBool,
+        overlay: true,
+        icon: 'myIcon-codeSuccess',
+        textStr: '验证码发送成功',
+        isBtnOne: false,
+      }"
+    ></SimpleBox>
     <!-- 注册成功弹框 -->
-    <SimpleBox :show="showRegisterBox" textStr="注册成功" status="register"></SimpleBox>
+    <SimpleBox
+      :objBox="{
+        show: showRegisterBox,
+        overlay: false,
+        icon: 'myIcon-registerSuccess',
+        textStr: '注册成功',
+        isBtnOne: true,
+        btnOneStr: '确定',
+      }"
+      @box_determine="registerBtn"
+    ></SimpleBox>
   </div>
 </template>
 <script>
@@ -126,8 +145,6 @@ export default {
       againPassword: "",
       // 是否勾选协议
       checked: false,
-      // 是否第一次已发送了验证码
-      sendCodeBoolOne: false,
       // 是否点击发送验证码按钮
       sendCodeBool: false,
       // 显示注册成功弹框
@@ -135,10 +152,16 @@ export default {
     };
   },
   components: {
+    // 弹框组件
     SimpleBox,
   },
   computed: {},
   methods: {
+    // 点击注册成功弹框的确定按钮
+    registerBtn() {
+      this.$router.replace("/login");
+      this.$router.go(-1);
+    },
     // 倒计时结束
     timeFinish() {
       this.sendCodeBool = false;
@@ -155,23 +178,20 @@ export default {
     // 校验验证码是否在发送后有填写
     validatorCode(val) {
       let bool = false;
-      if (this.sendCodeBoolOne) {
-        if (val) {
-          bool = true;
-        } else {
-          bool = false;
-        }
-      } else {
+      if (val) {
         bool = true;
       }
       return bool;
     },
     // 发送验证码
     sendCode() {
-      if (this.phone) {
+      if (this.phone && this.patternPhone.test(this.phone)) {
         this.sendCodeBool = true;
-        this.sendCodeBoolOne = true;
-        console.log(this.sendCodeBool);
+      } else {
+        this.$Toast({
+          message: "手机号错误",
+          position: "bottom",
+        });
       }
     },
     // 提交
@@ -194,11 +214,6 @@ export default {
 .register {
   .van-cell {
     align-items: center;
-    &:last-child {
-      &::after {
-        border-bottom: none;
-      }
-    }
   }
 }
 </style>

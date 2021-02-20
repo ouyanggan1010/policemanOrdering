@@ -1,5 +1,5 @@
 <template>
-  <div class="retrievePassword">
+  <div class="retrievePasswordOne">
     <van-form @submit="onSubmit" validate-first class="px-62 pt-80">
       <van-cell-group>
         <van-field
@@ -12,7 +12,7 @@
           :rules="[
             { required: true, message: '请填写手机号' },
             {
-              pattern: /^1(?:3\d|4[4-9]|5[0-35-9]|6[67]|7[013-8]|8\d|9\d)\d{8}$/,
+              pattern: patternPhone,
               message: '手机号格式不正确',
             },
           ]"
@@ -31,6 +31,7 @@
               color="#00b96b"
               v-show="!sendCodeBool"
               @click="sendCode"
+              native-type="button"
               >发送验证码</van-button
             >
             <van-count-down
@@ -57,19 +58,25 @@
       </div>
     </van-form>
     <!-- 验证码发送成功弹框 -->
-    <SimpleBox :show="sendCodeBool" textStr="验证码发送成功" status="code"></SimpleBox>
+    <SimpleBox
+      :objBox="{
+        show: sendCodeBool,
+        overlay: true,
+        icon: 'myIcon-codeSuccess',
+        textStr: '验证码发送成功',
+        isBtnOne: false,
+      }"
+    ></SimpleBox>
   </div>
 </template>
 <script>
 import SimpleBox from "../components/SimpleBox.vue";
 export default {
-  name: "RetrievePassword",
+  name: "RetrievePasswordOne",
   data() {
     return {
       phone: "",
       code: "",
-      // 是否第一次已发送了验证码
-      sendCodeBoolOne: false,
       // 是否点击发送验证码按钮
       sendCodeBool: false,
     };
@@ -87,32 +94,38 @@ export default {
     // 校验验证码是否在发送后有填写
     validatorCode(val) {
       let bool = false;
-      if (this.sendCodeBoolOne) {
-        if (val) {
-          bool = true;
-        } else {
-          bool = false;
-        }
-      } else {
+      if (val) {
         bool = true;
       }
       return bool;
     },
     // 发送验证码
     sendCode() {
-      if (this.phone) {
+      if (this.phone && this.patternPhone.test(this.phone)) {
         this.sendCodeBool = true;
-        this.sendCodeBoolOne = true;
-        console.log(this.sendCodeBool);
+      } else {
+        this.$Toast({
+          message: "手机号错误",
+          position: "bottom",
+        });
       }
     },
     // 提交
     onSubmit(values) {
       console.log("submit", values);
+      this.$router.push({
+        path: "/retrievePasswordTwo",
+        query: { phone: values.phone },
+      });
     },
   },
   mounted() {},
 };
 </script>
 <style lang="scss" rel="stylesheet/scss">
+.retrievePasswordOne {
+  .van-cell {
+    align-items: center;
+  }
+}
 </style>

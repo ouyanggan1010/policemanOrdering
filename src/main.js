@@ -39,7 +39,9 @@ import {
   CheckboxGroup,
   Toast,
   CountDown,
-  Popup
+  Popup,
+  Uploader,
+  ActionSheet
 } from "vant";
 Vue.use(Button);
 Vue.use(Tabbar);
@@ -60,6 +62,8 @@ Vue.use(CheckboxGroup);
 Vue.use(CountDown);
 Vue.use(Toast);
 Vue.use(Popup);
+Vue.use(Uploader);
+Vue.use(ActionSheet);
 
 Vue.prototype.$Toast = Toast;
 

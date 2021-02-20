@@ -6,9 +6,9 @@ const routes = [
   {
     path: "/",
     name: "App",
-    redirect: "/home"
+    redirect: "/home",
   },
-  // 首页
+  // --------------------------------首页
   {
     path: "/home",
     name: "Home",
@@ -16,10 +16,10 @@ const routes = [
     meta: {
       footShow: true,
       headShow: true,
-      headTitle: "现代农业服务平台"
+      headTitle: "现代农业服务平台",
     },
   },
-  // 服务
+  // --------------------------------服务
   {
     path: "/service",
     name: "Service",
@@ -27,10 +27,10 @@ const routes = [
     meta: {
       footShow: true,
       headShow: true,
-      headTitle: "服务"
+      headTitle: "服务",
     },
   },
-  // 问答
+  // --------------------------------问答
   {
     path: "/qa",
     name: "Qa",
@@ -38,10 +38,10 @@ const routes = [
     meta: {
       footShow: true,
       headShow: true,
-      headTitle: "问答"
+      headTitle: "问答",
     },
   },
-  // 我的
+  // --------------------------------我的
   {
     path: "/my",
     name: "My",
@@ -49,37 +49,95 @@ const routes = [
     meta: {
       footShow: true,
       headShow: true,
-      headTitle: "我的"
+      headTitle: "我的",
     },
   },
-  // 登录
+  // --------------------------------登录
   {
     path: "/login",
     name: "Login",
     component: () => import("../views/Login.vue"),
     meta: {
       headShow: true,
-      headTitle: "登录"
+      headTitle: "登录",
     },
   },
-  // 注册
+  // --------------------------------注册
   {
     path: "/register",
     name: "Register",
     component: () => import("../views/Register.vue"),
     meta: {
       headShow: true,
-      headTitle: "注册"
+      headTitle: "注册",
     },
   },
-  // 找回密码
+  // --------------------------------注册协议
   {
-    path: "/retrievePassword",
-    name: "RetrievePassword",
-    component: () => import("../views/RetrievePassword.vue"),
+    path: "/registerPact",
+    name: "RegisterPact",
+    component: () => import("../views/RegisterPact.vue"),
     meta: {
       headShow: true,
-      headTitle: "找回密码"
+      headTitle: "注册协议",
+    },
+  },
+  // --------------------------------找回密码
+  {
+    path: "/retrievePasswordOne",
+    name: "RetrievePasswordOne",
+    component: () => import("../views/RetrievePasswordOne.vue"),
+    meta: {
+      headShow: true,
+      headTitle: "找回密码",
+    },
+  },
+  {
+    path: "/retrievePasswordTwo",
+    name: "RetrievePasswordTwo",
+    component: () => import("../views/RetrievePasswordTwo.vue"),
+    meta: {
+      headShow: true,
+      headTitle: "找回密码",
+    },
+  },
+  // --------------------------------实名认证
+  {
+    path: "/verifiedOne",
+    name: "VerifiedOne",
+    component: () => import("../views/VerifiedOne.vue"),
+    meta: {
+      headShow: true,
+      headTitle: "实名认证",
+    },
+  },
+  {
+    path: "/verifiedTwo",
+    name: "VerifiedTwo",
+    component: () => import("../views/VerifiedTwo.vue"),
+    meta: {
+      headShow: true,
+      headTitle: "实名认证",
+    },
+  },
+  // --------------------------------认证通过
+  {
+    path: "/verifiedPass",
+    name: "VerifiedPass",
+    component: () => import("../views/VerifiedPass.vue"),
+    meta: {
+      headShow: true,
+      headTitle: "实名认证结果",
+    },
+  },
+  // --------------------------------认证失败
+  {
+    path: "/verifiedFail",
+    name: "VerifiedFail",
+    component: () => import("../views/VerifiedFail.vue"),
+    meta: {
+      headShow: true,
+      headTitle: "实名认证结果",
     },
   },
 ];

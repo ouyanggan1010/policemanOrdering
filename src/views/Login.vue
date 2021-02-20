@@ -10,7 +10,7 @@
           :rules="[
             { required: true, message: '请填写手机号' },
             {
-              pattern: /^1(?:3\d|4[4-9]|5[0-35-9]|6[67]|7[013-8]|8\d|9\d)\d{8}$/,
+              pattern: patternPhone,
               message: '手机号格式不正确',
             },
           ]"
@@ -38,7 +38,7 @@
       </div>
       <div class="mt-56 d-flex jc-between ai-center text-green-88 fs-36">
         <router-link tag="div" to="/register">注册账号</router-link>
-        <router-link tag="div" to="/retrievePassword">忘记密码？</router-link>
+        <router-link tag="div" to="/RetrievePasswordOne">忘记密码？</router-link>
       </div>
     </van-form>
   </div>

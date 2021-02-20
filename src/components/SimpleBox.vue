@@ -4,27 +4,27 @@
       class="fs-20 pb-30"
       :style="{ width: '170px' }"
       round
-      :close-on-click-overlay="status === 'code'"
+      :close-on-click-overlay="objBox.overlay"
       v-model="showBool"
       @opened="timeClose"
     >
       <div class="icon">
-        <span class="myIcon-codeSuccess" v-if="status === 'code'"></span>
-        <span class="myIcon-registerSuccess" v-else></span>
+        <!-- myIcon-codeSuccess myIcon-registerSuccess -->
+        <span :class="objBox.icon"></span>
       </div>
       <div
         class="textCont fs-42 text-black-31 d-flex jc-center ai-center flex-column mt-30"
       >
         <div class="fw-6">
-          {{ textStr }}
+          {{ objBox.textStr }}
         </div>
         <van-button
           color="#239688"
-          class="mt-34"
+          class="mt-34 d-flex jc-center ai-center"
           style="width: 132px; height: 25px"
-          v-if="status === 'register'"
-          @click="$router.replace('/login')"
-          >确定</van-button
+          v-if="objBox.isBtnOne"
+          @click="btnOneEvent"
+          >{{ objBox.btnOneStr }}</van-button
         >
       </div>
     </van-popup>
@@ -34,9 +34,10 @@
 export default {
   name: "SimpleBox",
   props: {
-    show: Boolean,
-    textStr: String,
-    status: String,
+    objBox: {
+      type: Object,
+      required: true
+    },
   },
   data() {
     return {
@@ -46,17 +47,21 @@ export default {
   computed: {},
   methods: {
     timeClose() {
-      if (this.status === "code") {
+      if (this.objBox.overlay) {
         setTimeout(() => {
           this.showBool = false;
         }, 500);
       }
     },
+    // 按钮一的事件
+    btnOneEvent(){
+      this.$emit("box_determine")
+    }
   },
   watch: {
     // 监听父组件值的改变
-    show() {
-      this.showBool = this.show;
+    "objBox.show"() {
+      this.showBool = this.objBox.show;
     },
   },
   mounted() {},

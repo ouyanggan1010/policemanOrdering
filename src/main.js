@@ -41,7 +41,12 @@ import {
   CountDown,
   Popup,
   Uploader,
-  ActionSheet
+  ActionSheet,
+  Icon,
+  Dialog,
+  Switch,
+  Tab,
+  Tabs,
 } from "vant";
 Vue.use(Button);
 Vue.use(Tabbar);
@@ -64,8 +69,14 @@ Vue.use(Toast);
 Vue.use(Popup);
 Vue.use(Uploader);
 Vue.use(ActionSheet);
+Vue.use(Icon);
+Vue.use(Dialog);
+Vue.use(Switch);
+Vue.use(Tab);
+Vue.use(Tabs);
 
 Vue.prototype.$Toast = Toast;
+Vue.prototype.$Dialog = Dialog;
 
 Vue.config.productionTip = false;
 

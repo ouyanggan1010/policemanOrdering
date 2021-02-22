@@ -2,6 +2,22 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 
 Vue.use(VueRouter);
+// 解决报错
+const originalPush = VueRouter.prototype.push;
+const originalReplace = VueRouter.prototype.replace;
+// push
+VueRouter.prototype.push = function push(location, onResolve, onReject) {
+  if (onResolve || onReject)
+    return originalPush.call(this, location, onResolve, onReject);
+  return originalPush.call(this, location).catch((err) => err);
+};
+// replace
+VueRouter.prototype.replace = function push(location, onResolve, onReject) {
+  if (onResolve || onReject)
+    return originalReplace.call(this, location, onResolve, onReject);
+  return originalReplace.call(this, location).catch((err) => err);
+};
+
 const routes = [
   {
     path: "/",
@@ -115,6 +131,10 @@ const routes = [
     path: "/verifiedTwo",
     name: "VerifiedTwo",
     component: () => import("../views/VerifiedTwo.vue"),
+    props: (route) => ({
+      trueName: route.query.trueName,
+      idNumber: route.query.idNumber,
+    }),
     meta: {
       headShow: true,
       headTitle: "实名认证",
@@ -138,6 +158,56 @@ const routes = [
     meta: {
       headShow: true,
       headTitle: "实名认证结果",
+    },
+  },
+  // --------------------------------个人资料
+  {
+    path: "/personalInformation",
+    name: "PersonalInformation",
+    component: () => import("../views/PersonalInformation.vue"),
+    meta: {
+      headShow: true,
+      headTitle: "个人资料",
+    },
+  },
+  // --------------------------------系统设置
+  {
+    path: "/systemSettings",
+    name: "SystemSettings",
+    component: () => import("../views/SystemSettings.vue"),
+    meta: {
+      headShow: true,
+      headTitle: "系统设置",
+    },
+  },
+  // --------------------------------修改密码
+  {
+    path: "/changePassword",
+    name: "ChangePassword",
+    component: () => import("../views/ChangePassword.vue"),
+    meta: {
+      headShow: true,
+      headTitle: "修改密码",
+    },
+  },
+  // --------------------------------资讯
+  {
+    path: "/news",
+    name: "News",
+    component: () => import("../views/News.vue"),
+    meta: {
+      headShow: true,
+      headTitle: "资讯",
+    },
+  },
+  // --------------------------------资讯列表
+  {
+    path: "/newsList",
+    name: "NewsList",
+    component: () => import("../views/NewsList.vue"),
+    meta: {
+      headShow: true,
+      headTitle: "资讯",
     },
   },
 ];

@@ -108,22 +108,22 @@ export default {
         {
           title: "政策法规",
           icon: "myIcon-policies",
-          link: "/service",
+          link: "/news",
         },
         {
           title: "通知公告",
           icon: "myIcon-notice",
-          link: "/",
+          link: "/news",
         },
         {
           title: "强农惠农",
           icon: "myIcon-farmer",
-          link: "/",
+          link: "/news",
         },
         {
           title: "应急管理",
           icon: "myIcon-emergency",
-          link: "/",
+          link: "/news",
         },
       ],
       // 农产品价格、农产品检测列表数组

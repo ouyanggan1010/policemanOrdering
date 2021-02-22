@@ -76,8 +76,8 @@
     <!-- 动作面板 -->
     <UploadFile
       :show="actionShow"
-      :after_read="afterReadPhoto"
-      :before_read="beforeReadPhoto"
+      @after_read="afterReadPhoto"
+      @change_status="actionChange"
     ></UploadFile>
     <!-- 认证完成弹框 -->
     <SimpleBox
@@ -98,6 +98,7 @@ import SimpleBox from "../components/SimpleBox.vue";
 import UploadFile from "../components/UploadFile.vue";
 export default {
   name: "VerifiedTwo",
+  props: ["trueName", "idNumber"],
   data() {
     return {
       // 图片预览
@@ -108,7 +109,7 @@ export default {
       idNumberNegativeFile: "",
       // 动作面板的显示隐藏
       actionShow: false,
-      // 由哪一面调用的 1拍照，2从相册选择
+      // 由哪一面调用的 1正面，2反面
       isAction: 1,
       // 自定义弹框
       showRegisterBox: false,
@@ -125,7 +126,6 @@ export default {
     // --------------点击弹框的确定按钮
     registerBtn() {
       this.$router.replace("/my");
-      this.$router.go(-2);
     },
     // --------------调起控制面板
     transferAction(num) {
@@ -134,7 +134,7 @@ export default {
     },
     // --------------照片选择后的回调函数
     afterReadPhoto(fileAll) {
-      console.log(555555)
+      this.actionChange(false);
       if (this.isAction == "1") {
         this.idNumberPositive = fileAll.content;
         this.idNumberPositiveFile = fileAll.file;
@@ -143,15 +143,16 @@ export default {
         this.idNumberNegativeFile = fileAll.file;
       }
     },
-    // --------------点击选中照片的回调函数
-    beforeReadPhoto() {
-      this.actionShow = false;
-      return true;
+    // --------------控制面板的显示隐藏
+    actionChange(bool) {
+      this.actionShow = bool;
     },
     // --------------提交
     onSubmit() {
       if (this.idNumberPositive && this.idNumberNegative) {
-        console.log("路由传过来的参数", this.$route.query);
+        console.log("路由传过来的参数");
+        console.log(this.trueName);
+        console.log(this.idNumber);
         console.log("正面图片", this.idNumberPositiveFile);
         console.log("反面图片", this.idNumberNegativeFile);
         this.showRegisterBox = true;
@@ -192,17 +193,6 @@ export default {
       bottom: 0;
       right: 0;
     }
-  }
-  .van-overlay {
-    background-color: rgba(0, 0, 0, 0.2);
-  }
-  .borderB {
-    border-bottom: 1px solid #e4e4e4;
-  }
-  .line {
-    width: 100%;
-    height: 24px;
-    background-color: #f2f2f2;
   }
 }
 </style>

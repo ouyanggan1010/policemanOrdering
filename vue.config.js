@@ -44,9 +44,8 @@ module.exports = {
           modifyVars: {
             // 直接覆盖变量
             "nav-bar-background-color": "#00b96b",
-            "nav-bar-height": "58px",
             "nav-bar-title-text-color": "#fff",
-            "nav-bar-title-font-size": "19px",
+            "nav-bar-title-font-size": "15px",
             "nav-bar-text-color": "#fff",
             "nav-bar-arrow-size":"11px"
           },

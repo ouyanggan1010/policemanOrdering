@@ -1,7 +1,7 @@
 <template>
   <div class="register">
     <van-form @submit="onSubmit" validate-first class="px-62 pt-80">
-      <van-cell-group>
+      <div>
         <van-field
           label-width="1.6rem"
           v-model="phone"
@@ -79,7 +79,7 @@
             },
           ]"
         />
-      </van-cell-group>
+      </div>
       <!-- 提交按钮 -->
       <div class="mt-100">
         <van-button

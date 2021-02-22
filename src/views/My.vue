@@ -1,7 +1,7 @@
 <template>
   <div class="my box-b px-32 pt-50">
     <!-- 用户 -->
-    <van-cell class="picCell" is-link to="">
+    <van-cell class="picCell" is-link to="/personalInformation">
       <template #title>
         <div class="d-flex ai-center">
           <div class="pic">
@@ -23,14 +23,19 @@
           </div>
         </div>
       </template>
-      <template #right-icon>
+      <!-- <template #right-icon>
         <div class="d-flex ai-center">
           <span class="myIcon-myArrowG"></span>
+        </div>
+      </template> -->
+      <template #right-icon>
+        <div class="d-flex ai-center">
+          <van-icon name="arrow" class="arrow" />
         </div>
       </template>
     </van-cell>
     <!-- 分组 -->
-    <van-cell-group class="mt-26 groupCell">
+    <div class="mt-26 groupCell">
       <van-cell is-link to="/VerifiedOne">
         <template #title>
           <div class="d-flex ai-center">
@@ -50,7 +55,7 @@
         </template>
         <template #right-icon>
           <div class="d-flex ai-center">
-            <span class="myIcon-myArrowG"></span>
+            <van-icon name="arrow" class="arrow" />
           </div>
         </template>
       </van-cell>
@@ -63,11 +68,11 @@
         </template>
         <template #right-icon>
           <div class="d-flex ai-center">
-            <span class="myIcon-myArrowG"></span>
+            <van-icon name="arrow" class="arrow" />
           </div>
         </template>
       </van-cell>
-      <van-cell is-link to="">
+      <van-cell is-link to="/systemSettings">
         <template #title>
           <div class="d-flex ai-center">
             <span class="myIcon-mySystemSet mr-56"></span>
@@ -76,11 +81,11 @@
         </template>
         <template #right-icon>
           <div class="d-flex ai-center">
-            <span class="myIcon-myArrowG"></span>
+            <van-icon name="arrow" class="arrow" />
           </div>
         </template>
       </van-cell>
-    </van-cell-group>
+    </div>
   </div>
 </template>
 <script>
@@ -109,21 +114,21 @@ export default {
       return newVal;
     },
     // 过滤认证状态
-    filtersVerified(val){
+    filtersVerified(val) {
       let str = "";
       switch (val) {
-        case '0':
-          str = "等待审核"
+        case "0":
+          str = "等待审核";
           break;
-        case '1':
-          str = "未认证"
+        case "1":
+          str = "未认证";
           break;
         default:
-          str = "已认证"
+          str = "已认证";
           break;
       }
       return str;
-    }
+    },
   },
   computed: {},
   methods: {},
@@ -132,6 +137,10 @@ export default {
 </script>
 <style lang="scss" rel="stylesheet/scss">
 .my {
+  .arrow {
+    font-size: 62px;
+    color: #8e8e8e;
+  }
   .pic {
     width: 186px;
     height: 186px;
@@ -145,10 +154,8 @@ export default {
   }
   .groupCell {
     .van-cell {
-      &:last-child {
-        &::after {
-          border-bottom: none;
-        }
+      &::after {
+        border-bottom: 0.028rem solid #ebedf0;
       }
     }
   }

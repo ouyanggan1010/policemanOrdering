@@ -1,7 +1,7 @@
 <template>
   <div class="retrievePasswordOne">
     <van-form @submit="onSubmit" validate-first class="px-62 pt-80">
-      <van-cell-group>
+      <div>
         <van-field
           label-width="1.6rem"
           v-model="phone"
@@ -49,7 +49,7 @@
             </van-count-down>
           </template>
         </van-field>
-      </van-cell-group>
+      </div>
       <!-- 提交按钮 -->
       <div class="mt-100">
         <van-button block color="#00b96b" native-type="submit"

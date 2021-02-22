@@ -2,11 +2,18 @@
   <!-- 登录的右侧 -->
   <div class="d-flex ai-center jc-center">
     <!-- 头部右侧返回箭头 -->
-    <span
+    <!-- <span
       class="myIcon-returnArrow"
       v-if="leftContent === '1'"
       @click="$router.back()"
-    ></span>
+    ></span> -->
+    <van-icon
+      name="arrow-left"
+      v-if="leftContent === '1'"
+      @click="$router.back()"
+      color="#fff"
+      size="20"
+    />
     <!-- 已登录的状态 -->
     <router-link
       to="/my"

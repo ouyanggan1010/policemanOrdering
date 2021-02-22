@@ -1,7 +1,7 @@
 <template>
   <div class="login">
     <van-form @submit="onSubmit" validate-first class="px-62 pt-80">
-      <van-cell-group>
+      <div>
         <van-field
           v-model="phone"
           name="phone"
@@ -30,7 +30,7 @@
             <span class="myIcon-loginPassWord mr-20"></span>
           </template>
         </van-field>
-      </van-cell-group>
+      </div>
       <div class="mt-100">
         <van-button block color="#00b96b" type="info" native-type="submit"
           >登录</van-button
@@ -38,7 +38,9 @@
       </div>
       <div class="mt-56 d-flex jc-between ai-center text-green-88 fs-36">
         <router-link tag="div" to="/register">注册账号</router-link>
-        <router-link tag="div" to="/RetrievePasswordOne">忘记密码？</router-link>
+        <router-link tag="div" to="/RetrievePasswordOne"
+          >忘记密码？</router-link
+        >
       </div>
     </van-form>
   </div>
@@ -62,13 +64,4 @@ export default {
 };
 </script>
 <style lang="scss" rel="stylesheet/scss">
-.login {
-  .van-cell {
-    &:last-child {
-      &::after {
-        border-bottom: none;
-      }
-    }
-  }
-}
 </style>

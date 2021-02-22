@@ -1,10 +1,13 @@
 <template>
   <div class="uploadFile">
-    <van-action-sheet :round="false" close-on-popstate v-model="actionShow">
+    <van-action-sheet
+      :round="false"
+      close-on-popstate
+      v-model="actionShowInside"
+    >
       <!-- 拍照 -->
       <van-uploader
         capture="camera"
-        :before-read="beforeReadPhotoEvt"
         :after-read="afterReadPhotoEvt"
         class="d-flex jc-center box-b py-40 borderB"
       >
@@ -12,7 +15,6 @@
       </van-uploader>
       <!-- 从相册中选择 -->
       <van-uploader
-        :before-read="beforeReadPhotoEvt"
         :after-read="afterReadPhotoEvt"
         class="d-flex jc-center box-b py-40"
       >
@@ -21,7 +23,7 @@
       <div class="line"></div>
       <div
         class="fs-42 text-black-31 fw-6 box-b py-40 text-center"
-        @click="actionShow = false"
+        @click="actionShowInside = false"
       >
         取消
       </div>
@@ -35,28 +37,39 @@ export default {
     show: Boolean,
   },
   data() {
-    return {
-      actionShow: false,
-    };
+    return {};
   },
-  watch: {
-    // 监听父组件值的改变
-    show() {
-      this.actionShow = this.show;
+  watch: {},
+  computed: {
+    actionShowInside: {
+      get() {
+        return this.show;
+      },
+      set(oldVal, newVal) {
+        this.$emit("change_status", newVal);
+      },
     },
   },
-  computed: {},
   methods: {
     afterReadPhotoEvt(file) {
-      this.$emit("after_read",file)
-    },
-    beforeReadPhotoEvt(file) {
-      this.$emit("before_read",file);
-      return true;
+      this.$emit("after_read", file);
     },
   },
   mounted() {},
 };
 </script>
 <style lang="scss" rel="stylesheet/scss">
+.uploadFile {
+  .van-overlay {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+  .borderB {
+    border-bottom: 1px solid #e4e4e4;
+  }
+  .line {
+    width: 100%;
+    height: 24px;
+    background-color: #f2f2f2;
+  }
+}
 </style>

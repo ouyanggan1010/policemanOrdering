@@ -1,16 +1,20 @@
 <template>
-  <div class="retrievePasswordTwo">
+  <div class="changePassword">
     <van-form @submit="onSubmit" validate-first class="px-62 pt-80">
-      <div>
+      <van-field
+        v-model="oldPassword"
+        name="oldPassword"
+        placeholder="请输入原密码"
+        :rules="[{ required: true, message: '请填写原密码' }]"
+      />
+      <van-cell-group :border="false" class="mt-26">
         <van-field
-          label-width="1.6rem"
           v-model="newPassword"
           name="newPassword"
           type="password"
-          label="登录密码"
-          placeholder="由6-16位字母、数字或符号组成"
+          placeholder="请设置6-16位字母、数字或符号组成的新密码"
           :rules="[
-            { required: true, message: '请填写密码' },
+            { required: true, message: '请填写新密码' },
             {
               pattern: patternPassword,
               message: '密码格式不正确',
@@ -18,12 +22,10 @@
           ]"
         />
         <van-field
-          label-width="1.6rem"
           v-model="againPassword"
           name="againPassword"
           type="password"
-          label="密码确认"
-          placeholder="请再次输入密码"
+          placeholder="请再次输入新密码"
           :rules="[
             { required: true, message: '请填写密码' },
             {
@@ -32,13 +34,9 @@
             },
           ]"
         />
-      </div>
-      <!-- 提交按钮 -->
+      </van-cell-group>
       <div class="mt-100">
-        <van-button
-          block
-          color="#00b96b"
-          native-type="submit"
+        <van-button block color="#00b96b" type="info" native-type="submit"
           >重置</van-button
         >
       </div>
@@ -60,9 +58,10 @@
 <script>
 import SimpleBox from "../components/SimpleBox.vue";
 export default {
-  name: "RetrievePasswordTwo",
+  name: "ChangePassword",
   data() {
     return {
+      oldPassword: "",
       newPassword: "",
       againPassword: "",
       // 显示密码重置成功弹框
@@ -77,8 +76,7 @@ export default {
   methods: {
     // 点击密码重置成功弹框的确定按钮
     registerBtn() {
-      this.$router.replace("/login");
-      this.$router.go(-2);
+      this.$router.replace("/my");
     },
     // 两次密码校验函数返回 true 表示校验通过，false 表示不通过
     againPassWord(val) {
@@ -90,7 +88,6 @@ export default {
     },
     // 提交
     onSubmit(values) {
-      console.log("路由传过来的参数", this.$route.query);
       console.log("submit", values);
       this.showRegisterBox = true;
     },
@@ -99,5 +96,4 @@ export default {
 };
 </script>
 <style lang="scss" rel="stylesheet/scss">
-
 </style>

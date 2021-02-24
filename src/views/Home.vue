@@ -14,7 +14,14 @@
     </van-swipe>
     <!-- 四宫格 -->
     <van-grid :border="false" :column-num="4" class="mt-26">
-      <van-grid-item :to="item.link" v-for="(item, i) in gridsFour" :key="i">
+      <van-grid-item
+        :to="{
+          path: '/news',
+          query: { pIdActive: item.id },
+        }"
+        v-for="(item, i) in gridsFour"
+        :key="i"
+      >
         <template #icon>
           <span :class="item.icon"></span>
         </template>
@@ -49,11 +56,17 @@
           <div class="line"></div>
           <div class="fs-36 text-black-31 ml-26">最新资讯</div>
         </div>
-        <router-link tag="div" to="" class="fs-30 text-black-61"
+        <router-link
+          tag="div"
+          :to="{
+            path: '/news',
+            query: { pIdActive: 'id_02' },
+          }"
+          class="fs-30 text-black-61"
           >查看更多</router-link
         >
       </div>
-      <div class="cards">
+      <div class="cards pt-28">
         <router-link
           tag="div"
           to=""
@@ -70,7 +83,7 @@
               :src="item.pic"
             />
           </div>
-          <div class="ml-26 mr-10 d-flex flex-column jc-between">
+          <div class="ml-26 mr-10 flex-1 d-flex flex-column jc-between">
             <div class="fs-36 text-black-31 fw-6">{{ item.title }}</div>
             <div class="d-flex jc-end ai-center">
               <span class="myIcon-date mr-16"></span>
@@ -92,15 +105,15 @@ export default {
       images: [
         {
           id: "swiper_01",
-          pic: "https://img01.yzcdn.cn/vant/apple-1.jpg"
+          pic: "https://img01.yzcdn.cn/vant/apple-1.jpg",
         },
         {
           id: "swiper_02",
-          pic: "https://img01.yzcdn.cn/vant/apple-2.jpg"
+          pic: "https://img01.yzcdn.cn/vant/apple-2.jpg",
         },
         {
           id: "swiper_03",
-          pic: "https://img01.yzcdn.cn/vant/apple-3.jpg"
+          pic: "https://img01.yzcdn.cn/vant/apple-3.jpg",
         },
       ],
       // 政策法规、通知公告、强农惠农、应急管理列表数组
@@ -108,22 +121,22 @@ export default {
         {
           title: "政策法规",
           icon: "myIcon-policies",
-          link: "/news",
+          id: "id_01",
         },
         {
           title: "通知公告",
           icon: "myIcon-notice",
-          link: "/news",
+          id: "id_03",
         },
         {
           title: "强农惠农",
           icon: "myIcon-farmer",
-          link: "/news",
+          id: "id_04",
         },
         {
           title: "应急管理",
           icon: "myIcon-emergency",
-          link: "/news",
+          id: "id_05",
         },
       ],
       // 农产品价格、农产品检测列表数组

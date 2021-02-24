@@ -47,6 +47,12 @@ import {
   Switch,
   Tab,
   Tabs,
+  PullRefresh,
+  List,
+  Search,
+  DropdownMenu,
+  DropdownItem,
+  Popover
 } from "vant";
 Vue.use(Button);
 Vue.use(Tabbar);
@@ -74,6 +80,12 @@ Vue.use(Dialog);
 Vue.use(Switch);
 Vue.use(Tab);
 Vue.use(Tabs);
+Vue.use(PullRefresh);
+Vue.use(List);
+Vue.use(Search);
+Vue.use(DropdownMenu);
+Vue.use(DropdownItem);
+Vue.use(Popover);
 
 Vue.prototype.$Toast = Toast;
 Vue.prototype.$Dialog = Dialog;

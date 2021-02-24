@@ -1,7 +1,7 @@
 <template>
   <div class="verifiedOne">
     <van-form @submit="onSubmit" validate-first class="px-62 pt-80">
-      <van-cell-group>
+      <van-cell-group :border="false">
         <van-field
           v-model="trueName"
           name="trueName"

@@ -57,6 +57,49 @@ const routes = [
       headTitle: "问答",
     },
   },
+  // --------------------------------问题列表
+  {
+    path: "/qaList",
+    name: "QaList",
+    component: () => import("../views/QaList.vue"),
+    meta: {
+      QafootShow: true,
+      headShow: true,
+      headTitle: "问题列表",
+    },
+  },
+  // --------------------------------提问详情
+  {
+    path: "/questionDetails",
+    name: "QuestionDetails",
+    component: () => import("../views/QuestionDetails.vue"),
+    meta: {
+      headShow: true,
+      headTitle: "提问详情",
+    },
+  },
+  // --------------------------------我要提问
+  {
+    path: "/qaAsking",
+    name: "QaAsking",
+    component: () => import("../views/QaAsking.vue"),
+    meta: {
+      QafootShow: true,
+      headShow: true,
+      headTitle: "我要提问",
+    },
+  },
+  // --------------------------------我的问答
+  {
+    path: "/qaMyCnt",
+    name: "QaMyCnt",
+    component: () => import("../views/QaMyCnt.vue"),
+    meta: {
+      QafootShow: true,
+      headShow: true,
+      headTitle: "我的问答",
+    },
+  },
   // --------------------------------我的
   {
     path: "/my",
@@ -199,15 +242,19 @@ const routes = [
       headShow: true,
       headTitle: "资讯",
     },
+    props: (route) => ({
+      pIdActive: route.query.pIdActive,
+      cIdActive: route.query.cIdActive,
+    }),
   },
-  // --------------------------------资讯列表
+  // --------------------------------资讯详情
   {
-    path: "/newsList",
-    name: "NewsList",
-    component: () => import("../views/NewsList.vue"),
+    path: "/newsDetails",
+    name: "NewsDetails",
+    component: () => import("../views/NewsDetails.vue"),
     meta: {
       headShow: true,
-      headTitle: "资讯",
+      headTitle: "资讯详情",
     },
   },
 ];

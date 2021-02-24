@@ -161,7 +161,7 @@ $whPer: (1, 2, 3, 4, 5);
 }
 //------------------------------line-height
 $lineH: 10;
-@while $lineH < 100 {
+@while $lineH < 300 {
     .lineH-#{$lineH} {
         line-height: $lineH * $base-size;
     }

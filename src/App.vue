@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" v-cloak>
     <!-- 头部导航栏 @click-left="$router.back()" -->
     <van-nav-bar
       :title="$route.meta.headTitle"
@@ -14,12 +14,12 @@
     </van-nav-bar>
     <!-- 路由切换 -->
     <router-view />
-    <!-- 底部导航栏 -->
+    <!-- 公用底部导航栏 -->
     <van-tabbar
       route
       fixed
       placeholder
-      v-model="active"
+      v-model="activeOne"
       v-if="$route.meta.footShow"
       active-color="#239688"
       inactive-color="#c8c8c8"
@@ -53,20 +53,52 @@
         </template>
       </van-tabbar-item>
     </van-tabbar>
+    <!-- 我的问答底部导航栏 -->
+    <van-tabbar
+      route
+      fixed
+      placeholder
+      v-model="activeTwo"
+      v-if="$route.meta.QafootShow"
+      active-color="#239688"
+      inactive-color="#c8c8c8"
+    >
+      <van-tabbar-item replace to="/qaList" name="qaList"
+        >问题列表
+        <template #icon="props">
+          <span v-if="props.active" class="myIcon-qaFootQaListB"></span>
+          <span v-else class="myIcon-qaFootQaListG"></span>
+        </template>
+      </van-tabbar-item>
+      <van-tabbar-item replace to="/qaAsking" name="qaAsking"
+        >提问
+        <template #icon>
+          <span class="myIcon-qaFootAskG"></span>
+        </template>
+      </van-tabbar-item>
+      <van-tabbar-item replace to="/qaMyCnt" name="qaMyCnt"
+        >我的问答
+        <template #icon="props">
+          <span v-if="props.active" class="myIcon-qaFootMyQaB"></span>
+          <span v-else class="myIcon-qaFootMyQaG"></span>
+        </template>
+      </van-tabbar-item>
+    </van-tabbar>
   </div>
 </template>
 
 <script>
-import NavBarLeft from "./components/NavBarLeft.vue"
+import NavBarLeft from "./components/NavBarLeft.vue";
 export default {
   name: "App",
   data() {
     return {
-      active: "home",
+      activeOne: "home",
+      activeTwo: "qaAsking",
     };
   },
   components: {
-    NavBarLeft
+    NavBarLeft,
   },
   computed: {},
   methods: {},
@@ -79,5 +111,8 @@ export default {
   .van-nav-bar__title {
     font-weight: 600;
   }
+}
+.van-overlay {
+  background-color: rgba(0, 0, 0, 0.2);
 }
 </style>

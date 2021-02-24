@@ -1,4 +1,8 @@
 @charset "utf-8";
+[v-cloak] {
+  display: none;
+}
+
 .homeLeft {
   &.avatar {
     width: 88px;
@@ -61,4 +65,25 @@
   &::after {
     border-bottom: none;
   }
+}
+
+// 问题筛选气泡
+.popoverclassLists {
+  min-height: 540px;
+  .popoverList {
+    border-top: 1px solid #e5e5e5;
+    height: 100px;
+    box-sizing: border-box;
+    &:first-child{
+      border: none;
+    }
+  }
+}
+
+.popoverWidth1{
+  width: 430px;
+}
+
+.popoverWidth2 {
+  width: calc(100vw - (63px * 2));
 }

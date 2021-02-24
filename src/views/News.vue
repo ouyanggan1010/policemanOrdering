@@ -6,27 +6,38 @@
       class="tabsTitleClass"
       type="card"
       v-model="active"
-      animated
     >
       <van-tab
         v-for="tabs in tabsOne"
         title-class="titleClass"
         :key="tabs.id"
         :title="tabs.title"
+        :name="tabs.id"
       >
-        内容
+        <MyVanTab :tab="tabs" :cIdActive="cIdActive"></MyVanTab>
       </van-tab>
     </van-tabs>
   </div>
 </template>
 <script>
-import NewsList from "../components/NewsList.vue";
+import MyVanTab from "../components/MyVanTab.vue";
 export default {
   name: "News",
+  props: ["pIdActive", "cIdActive"],
   data() {
     return {
-      active: 0,
-      tabsOne: [
+      active: "",
+      tabsOne: [],
+    };
+  },
+  components: {
+    MyVanTab,
+  },
+  computed: {},
+  methods: {
+    // 初始化请求
+    getTabList() {
+      this.tabsOne = [
         {
           id: "id_01",
           title: "政策法规",
@@ -91,18 +102,21 @@ export default {
           title: "应急管理",
           children: [],
         },
-      ],
-    };
+      ];
+      // 初始化选中项
+      this.active = this.pIdActive ? this.pIdActive : "";
+    },
   },
-  computed: {},
-  methods: {},
-  mounted() {},
+  mounted() {
+    this.getTabList();
+  },
 };
 </script>
 <style lang="scss" rel="stylesheet/scss">
 .news {
   .tabsTitleClass {
-    $hieght: 135px;
+    height: 100%;
+    $hieght: 145px;
     .van-tabs__wrap {
       height: $hieght;
       background-color: #fff;
@@ -111,7 +125,7 @@ export default {
       height: $hieght;
       border: none;
       margin: 0 20px;
-      padding: 28px 0;
+      padding: 33px 0;
       box-sizing: border-box;
       .titleClass {
         border-right: none;

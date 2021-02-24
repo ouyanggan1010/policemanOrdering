@@ -1,6 +1,6 @@
 <template>
-  <div class="registerPact box-b px-32 py-80">
-    <div class="bg-white box-b px-50 py-60 fs-40 text-black-31 fw-6 lineH-70">
+  <div class="registerPact box-b px-32 py-60">
+    <div class="contentH bg-white box-b px-50 py-60 fs-40 text-black-31 fw-6 lineH-70">
       {{ content }}
     </div>
   </div>
@@ -19,4 +19,9 @@ export default {
 };
 </script>
 <style lang="scss" rel="stylesheet/scss">
+.registerPact {
+  .contentH {
+    min-height: calc(100vh - 132.47px - 120px);
+  }
+}
 </style>

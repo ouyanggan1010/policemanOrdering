@@ -54,3 +54,7 @@ a {
 .clear {
     @include clearfix;
 }
+
+.posR{
+    position: relative;
+}

@@ -3,13 +3,15 @@
     <!-- 轮播图 -->
     <van-swipe :autoplay="3000" class="swipeImages" indicator-color="white">
       <van-swipe-item v-for="image in images" :key="image.id">
-        <van-image
-          lazy-load
-          width="100%"
-          height="100%"
-          fit="contain"
-          :src="image.pic"
-        />
+        <router-link to="/newsDetails">
+          <van-image
+            lazy-load
+            width="100%"
+            height="100%"
+            fit="contain"
+            :src="image.pic"
+          />
+        </router-link>
       </van-swipe-item>
     </van-swipe>
     <!-- 四宫格 -->
@@ -69,8 +71,8 @@
       <div class="cards pt-28">
         <router-link
           tag="div"
-          to=""
-          class="card d-flex"
+          to="/newsDetails"
+          class="card d-flex van-hairline--top"
           v-for="item in latestNews"
           :key="item.id"
         >

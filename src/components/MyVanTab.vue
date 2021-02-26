@@ -63,7 +63,21 @@ export default {
       height: 120px !important;
     }
     .van-tabs__nav {
-      border-top: 1px solid #e5e5e5 !important;
+      // border-top: 1px solid #e5e5e5 !important;
+      &::after {
+        position: absolute;
+        box-sizing: border-box;
+        content: " ";
+        pointer-events: none;
+        top: -50%;
+        right: -50%;
+        bottom: -50%;
+        left: -50%;
+        border: 0 solid #ebedf0;
+        -webkit-transform: scale(0.5);
+        transform: scale(0.5);
+        border-top-width: 0.02667rem;
+      }
     }
     .van-tab {
       font-weight: 600;

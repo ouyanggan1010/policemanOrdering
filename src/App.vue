@@ -11,6 +11,10 @@
       <template #left>
         <NavBarLeft></NavBarLeft>
       </template>
+      <!-- 自定义由侧图标 -->
+      <template #right v-if="$route.name == 'Home'">
+        <router-link to="/messageList"><van-icon name="envelop-o" color="#ffffff" size="20" dot /></router-link>
+      </template>
     </van-nav-bar>
     <!-- 路由切换 -->
     <router-view />
@@ -72,8 +76,9 @@
       </van-tabbar-item>
       <van-tabbar-item replace to="/qaAsking" name="qaAsking"
         >提问
-        <template #icon>
-          <span class="myIcon-qaFootAskG"></span>
+        <template #icon="props">
+          <span v-if="props.active" class="myIcon-qaFootAskB"></span>
+          <span v-else class="myIcon-qaFootAskG"></span>
         </template>
       </van-tabbar-item>
       <van-tabbar-item replace to="/qaMyCnt" name="qaMyCnt"

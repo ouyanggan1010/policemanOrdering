@@ -19,7 +19,7 @@
       </template>
       <div class="popoverclassLists box-b px-24 py-20">
         <div
-          class="popoverList popoverWidth2 fs-36 fw-6 text-black-31 d-flex jc-between ai-center px-22"
+          class="popoverList van-hairline--top popoverWidth2 fs-36 fw-6 text-black-31 d-flex jc-between ai-center px-22"
           v-for="(popover, i) in popoverArry"
           :key="popover"
           @click="changePopover(i)"
@@ -59,9 +59,22 @@
         >
       </div>
     </van-form>
+    <!-- 认证完成弹框 -->
+    <SimpleBox
+      :objBox="{
+        show: showRegisterBox,
+        overlay: false,
+        icon: 'myIcon-registerSuccess',
+        textStr: '提交成功',
+        isBtnOne: true,
+        btnOneStr: '确定',
+      }"
+      @box_determine="registerBtn"
+    ></SimpleBox>
   </div>
 </template>
 <script>
+import SimpleBox from "../components/SimpleBox.vue";
 export default {
   name: "QaAsking",
   data() {
@@ -74,7 +87,13 @@ export default {
       // 表单项
       title: "",
       question: "",
+      // 完成弹框
+      showRegisterBox: false,
     };
+  },
+  components: {
+    // 弹框组件
+    SimpleBox,
   },
   computed: {},
   methods: {
@@ -91,6 +110,11 @@ export default {
         return false;
       }
       console.log("submit", values);
+      this.showRegisterBox = true;
+    },
+    // --------------点击弹框的确定按钮
+    registerBtn() {
+      this.$router.replace("/qaMyCnt");
     },
   },
   mounted() {},

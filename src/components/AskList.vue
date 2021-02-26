@@ -22,8 +22,8 @@
           v-for="(list, index) in lists"
           :key="index"
         >
-          <div class="cntOne pt-30 d-flex flex-column jc-between">
-            <div class="title fs-42 fw-6 text-black-31 van-multi-ellipsis--l2">
+          <div class="cntOne van-hairline--bottom pt-30 d-flex flex-column jc-between">
+            <div class="title fs-40 fw-6 text-black-31 van-multi-ellipsis--l2">
               {{ list.title }}
             </div>
             <div
@@ -149,7 +149,7 @@ export default {
         margin-top: 0;
       }
       .cntOne {
-        border-bottom: 1px solid #e5e5e5;
+        // border-bottom: 1px solid #e5e5e5;
         min-height: 230px;
       }
       .cntTwo {

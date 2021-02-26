@@ -122,6 +122,10 @@
 .myIcon-myQa{
     @include appicon(-983px, -45px, 57px, 56px)
 }
+/*------------农户种植信息采集-----------*/ 
+.myIcon-myfpCollectInformation{
+    @include appicon(-972px, -104px, 50px, 56px)
+}
 /*------------系统设置-----------*/ 
 .myIcon-mySystemSet{
     @include appicon(-732px, -137px, 57px, 55px)
@@ -174,8 +178,11 @@
     @include appicon(-86px, -660px, 70px, 57px)
 }
 /*------------尾部-提问-----------*/ 
+.myIcon-qaFootAskB{
+    @include appicon(-444px, -660px, 60px, 60px)
+}
 .myIcon-qaFootAskG{
-    @include appicon(-172px, -660px, 60px, 59px)
+    @include appicon(-380px, -660px, 60px, 60px)
 }
 /*------------尾部-我的问答-----------*/ 
 .myIcon-qaFootMyQaB{
@@ -183,4 +190,14 @@
 }
 .myIcon-qaFootMyQaG{
     @include appicon(-248px, -660px, 56px, 56px)
+}
+
+/*---------------------------------------------消息页图标---------------------------------------*/ 
+/*------------提醒消息-----------*/ 
+.myIcon-warnMsg{
+    @include appicon(-406px, -457px, 128px, 128px)
+}
+/*------------回答消息-----------*/ 
+.myIcon-replyMsg{
+    @include appicon(-549px, -457px, 128px, 128px)
 }

@@ -19,6 +19,10 @@ Vue.prototype.$http = http;
 import mixin from "./mixin";
 Vue.mixin(mixin);
 
+// -------------------全局引用格式化时间
+import dayjs from "dayjs";
+Vue.prototype.$dayjs = dayjs;
+
 // -------------------按需引入组件
 import {
   Button,
@@ -52,7 +56,11 @@ import {
   Search,
   DropdownMenu,
   DropdownItem,
-  Popover
+  Popover,
+  SwipeCell,
+  Badge,
+  Picker,
+  DatetimePicker
 } from "vant";
 Vue.use(Button);
 Vue.use(Tabbar);
@@ -86,6 +94,10 @@ Vue.use(Search);
 Vue.use(DropdownMenu);
 Vue.use(DropdownItem);
 Vue.use(Popover);
+Vue.use(SwipeCell);
+Vue.use(Badge);
+Vue.use(Picker);
+Vue.use(DatetimePicker);
 
 Vue.prototype.$Toast = Toast;
 Vue.prototype.$Dialog = Dialog;

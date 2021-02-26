@@ -48,9 +48,10 @@
         box-sizing: border-box;
         padding: 28px 0;
         width: 100%;
-        border-top: 1px solid map-get($colors, "gray-e5");
         &:nth-child(1) {
-          border: none;
+          &::after {
+            border-top-width: 0;
+          }
         }
         > .image {
           width: 310px;
@@ -71,16 +72,19 @@
 .popoverclassLists {
   min-height: 540px;
   .popoverList {
-    border-top: 1px solid #e5e5e5;
+    // border-top: 1px solid #e5e5e5;
     height: 100px;
     box-sizing: border-box;
-    &:first-child{
-      border: none;
+    &:first-child {
+      // border: none;
+      &.van-hairline--top::after {
+        border-top-width: 0;
+      }
     }
   }
 }
 
-.popoverWidth1{
+.popoverWidth1 {
   width: 430px;
 }
 

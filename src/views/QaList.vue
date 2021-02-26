@@ -3,7 +3,7 @@
     <!-- 搜索 -->
     <van-search v-model="serchValue" shape="round" placeholder="关键字搜索" />
     <!-- 所有下拉菜单 -->
-    <div class="d-flex ai-center jc-between bg-white borderTop">
+    <div class="d-flex ai-center jc-between bg-white van-hairline--top">
       <!-- 下拉菜单1 -->
       <van-popover
         class="qaPopoverList"
@@ -23,7 +23,7 @@
         </template>
         <div class="popoverclassLists box-b px-24">
           <div
-            class="popoverList popoverWidth1 fs-36 fw-6 text-black-31 d-flex jc-between ai-center px-22"
+            class="popoverList van-hairline--top popoverWidth1 fs-36 fw-6 text-black-31 d-flex jc-between ai-center px-22"
             v-for="(popoverOne, i) in popoverArryOne"
             :key="popoverOne"
             @click="changePopover(i, 1)"
@@ -53,7 +53,7 @@
         </template>
         <div class="popoverclassLists box-b px-24 py-20">
           <div
-            class="popoverList popoverWidth1 fs-36 fw-6 text-black-31 d-flex jc-between ai-center px-22"
+            class="popoverList van-hairline--top popoverWidth1 fs-36 fw-6 text-black-31 d-flex jc-between ai-center px-22"
             v-for="(popoverTwo, j) in popoverArryTwo"
             :key="popoverTwo"
             @click="changePopover(j, 2)"
@@ -123,7 +123,7 @@ export default {
 .qaList {
   height: calc(100vh - 132.47px - 143.98px);
   .borderTop {
-    border-top: 1px solid #e5e5e5;
+    // border-top: 1px solid #e5e5e5;
   }
   .filterQa {
     position: relative;
@@ -133,10 +133,14 @@ export default {
       box-sizing: border-box;
       content: " ";
       pointer-events: none;
-      top: 33px;
-      bottom: 33px;
-      right: 0;
-      border-right: 1px solid #e5e5e5;
+      top: 0;
+      right: -50%;
+      bottom: 0;
+      left: -50%;
+      border: 0 solid #ebedf0;
+      -webkit-transform: scale(0.5);
+      transform: scale(0.5);
+      border-right-width: 0.02667rem;
     }
   }
   .qaPopoverList {

@@ -9,7 +9,7 @@
       <van-uploader
         capture="camera"
         :after-read="afterReadPhotoEvt"
-        class="d-flex jc-center box-b py-40 borderB"
+        class="d-flex jc-center box-b py-40 van-hairline--bottom"
       >
         <div class="fs-42 text-black-31 fw-6">拍照</div>
       </van-uploader>
@@ -62,9 +62,6 @@ export default {
 .uploadFile {
   .van-overlay {
     background-color: rgba(0, 0, 0, 0.2);
-  }
-  .borderB {
-    border-bottom: 1px solid #e4e4e4;
   }
   .line {
     width: 100%;

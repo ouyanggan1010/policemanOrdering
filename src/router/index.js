@@ -257,6 +257,36 @@ const routes = [
       headTitle: "资讯详情",
     },
   },
+  // --------------------------------消息列表
+  {
+    path: "/messageList",
+    name: "MessageList",
+    component: () => import("../views/MessageList.vue"),
+    meta: {
+      headShow: true,
+      headTitle: "消息",
+    },
+  }, 
+  // --------------------------------消息详情
+  {
+    path: "/messageDetails",
+    name: "MessageDetails",
+    component: () => import("../views/MessageDetails.vue"),
+    meta: {
+      headShow: true,
+      headTitle: "消息详情",
+    },
+  },
+  // --------------------------------农户种植信息采集
+  {
+    path: "/fpCollectInformation",
+    name: "FpCollectInformation",
+    component: () => import("../views/FpCollectInformation.vue"),
+    meta: {
+      headShow: true,
+      headTitle: "农户种植信息采集",
+    },
+  },
 ];
 
 const router = new VueRouter({

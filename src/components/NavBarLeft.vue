@@ -37,7 +37,7 @@
       class="text-white fs-32"
       >登录/注册</router-link
     >
-    <!-- 右侧无 -->
+    <!-- 左侧无 -->
     <span v-if="leftContent === '3'"></span>
   </div>
 </template>

@@ -1,7 +1,7 @@
 <template>
-  <div class="newsList" :class="{ isOnenavH: !cId, isTwonavH: cId }">
+  <div class="messageList">
     <van-pull-refresh
-      class="listMinH"
+      class="listMinH pt-50 box-b"
       v-model="refreshing"
       @refresh="onRefresh"
     >
@@ -12,49 +12,54 @@
         @load="onLoad"
         class="cards"
       >
-        <div class="bg-white px-34 box-b">
+        <van-swipe-cell
+          v-for="(list, index) in lists"
+          :key="index"
+          class="card bg-white"
+        >
           <router-link
             tag="div"
-            to="/newsDetails"
-            class="card d-flex jc-between ai-center van-hairline--top"
-            v-for="(list, index) in lists"
-            :key="index"
+            :to="list.type == 0 ? '/messageDetails' : '/questionDetails'"
+            class="d-flex px-38 py-30"
           >
-            <div
-              class="d-flex flex-column jc-between heightPer-1 flex-1 pr-28 box-b"
+            <span
+              :class="{
+                'myIcon-warnMsg': list.type == 0,
+                'myIcon-replyMsg': list.type == 1,
+              }"
             >
-              <div class="fs-36 text-black-31 fw-6">
-                {{ list.title }}
-              </div>
-              <div class="d-flex jc-start ai-center">
-                <div class="d-flex jc-start ai-center iconTitle">
-                  <span class="myIcon-tipsIcon mr-16"></span>
-                  <span class="fs-32 text-black-91">{{ sort }}</span>
+              <span class="dot" v-if="list.read"></span>
+            </span>
+            <div class="box-b pl-42 d-flex flex-column jc-between widthOne">
+              <div class="d-flex jc-between ai-center">
+                <div class="fs-42 text-black-31 fw-6 van-ellipsis flex-1">
+                  {{ list.title }}
                 </div>
-                <div class="d-flex jc-start ai-center">
-                  <span class="myIcon-date mr-16"></span>
-                  <span class="fs-32 text-black-91">{{ list.time }}</span>
-                </div>
+                <span class="fs-30 text-black-91 fw-6 ml-20">
+                  {{ list.time }}</span
+                >
               </div>
-            </div>
-            <div class="imagePic">
-              <van-image
-                lazy-load
-                width="100%"
-                height="100%"
-                fit="contain"
-                :src="list.pic"
-              />
+              <div class="fs-32 text-black-91 fw-6 van-ellipsis">
+                {{ list.tips }}
+              </div>
             </div>
           </router-link>
-        </div>
+          <template #right>
+            <van-button
+              square
+              text="删除"
+              type="danger"
+              class="delete-button heightPer-1"
+            />
+          </template>
+        </van-swipe-cell>
       </van-list>
     </van-pull-refresh>
   </div>
 </template>
 <script>
 export default {
-  name: "NewsList",
+  name: "MessageList",
   props: {
     pId: String,
     cId: String,
@@ -88,10 +93,11 @@ export default {
         for (let i = this.count; i < total; i++) {
           this.lists.push({
             id: `id_01010${i + 1}`,
-            title: `第${i + 1}条：为了“中国饭碗”的底座更坚实——国家南繁基地`,
-            pic: "https://img01.yzcdn.cn/vant/cat.jpeg",
+            title: `第${i + 1}条：头像审核不通过！`,
+            type: i % 2 == 0 ? 0 : 1, //0表示是消息，1表示是答复
             time: "2018-01-01",
-            sort: "",
+            tips: "头像存在反共信息，请重新上传头像。",
+            read: i % 3 == 0 ? true : false,
           });
           this.count = this.count + 1;
         }
@@ -115,39 +121,36 @@ export default {
 };
 </script>
 <style lang="scss" rel="stylesheet/scss">
-.newsList {
-  &.isOnenavH {
-    height: calc(100vh - 132.47px - 144px);
-  }
-  &.isTwonavH {
-    height: calc(100vh - 132.47px - 144px - 120px);
-  }
-  padding-top: 28px;
+.messageList {
+  height: calc(100vh - 132.47px);
   box-sizing: border-box;
   .listMinH {
     height: 100%;
     overflow-y: auto;
   }
   .cards {
+    box-sizing: border-box;
     .card {
-      height: 210px + (28px * 2);
-      box-sizing: border-box;
-      padding: 28px 0;
-      // border-top: 1px solid #e5e5e5;
+      margin-top: 24px;
       &:first-child {
-        // border: none;
-        &::after {
-          border-top-width: 0;
-        }
+        margin-top: 0;
       }
-      .imagePic {
-        width: 310px;
-        height: 210px;
-      }
-      .iconTitle {
-        width: 250px;
+      .widthOne {
+        width: calc(100% - 128px);
       }
     }
+  }
+  .dot {
+    position: absolute;
+    top: 12px;
+    right: 5px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #eb2323;
+  }
+  [class^="myIcon-"] {
+    position: relative;
   }
 }
 </style>

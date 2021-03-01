@@ -11,6 +11,7 @@
     >
       <van-tab title="信息上报">
         <InformationReport
+          ref="childReport"
           :cityValParent="cityVal"
           @show_city="showPickerCity = true"
           :plantDateValParent="plantDateVal"
@@ -19,9 +20,12 @@
           @show_harvestDate="showPickerDateTwo = true"
           :varietiesValParent="varietiesVal"
           @show_varieties="showPickerVarieties = true"
+          @show_box="showRegisterBox = true"
         />
       </van-tab>
-      <van-tab title="已报信息"> 的复合肥的汉服 </van-tab>
+      <van-tab title="已报信息">
+        <InformationReported v-if="reportRefresh" ref="childReported" />
+      </van-tab>
     </van-tabs>
     <!-- 市县选择器 -->
     <van-popup v-model="showPickerCity" position="bottom">
@@ -69,14 +73,30 @@
         @cancel="showPickerDateTwo = false"
       />
     </van-popup>
+    <!-- 完成弹框 -->
+    <SimpleBox
+      :objBox="{
+        show: showRegisterBox,
+        overlay: false,
+        icon: 'myIcon-registerSuccess',
+        textStr: '提交成功',
+        isBtnOne: true,
+        btnOneStr: '确定',
+      }"
+      @box_determine="registerBtn"
+    ></SimpleBox>
   </div>
 </template>
 <script>
 import InformationReport from "../components/InformationReport.vue";
+import InformationReported from "../components/InformationReported.vue";
+import SimpleBox from "../components/SimpleBox.vue";
 export default {
   name: "FpCollectInformation",
   components: {
     InformationReport,
+    InformationReported,
+    SimpleBox,
   },
   data() {
     return {
@@ -86,7 +106,7 @@ export default {
       showPickerCity: false,
       cityVal: "",
       // 选择品种
-      columnsVarieties:["品种一", "品种二", "品种三", "品种四", "品种五"],
+      columnsVarieties: ["品种一", "品种二", "品种三", "品种四", "品种五"],
       showPickerVarieties: false,
       varietiesVal: "",
       // 选择种植时间
@@ -101,6 +121,10 @@ export default {
       currentDateTwo: new Date(),
       harvestDateVal: "",
       showPickerDateTwo: false,
+      // 完成弹框
+      showRegisterBox: false,
+      // 信息上报子组件的显示隐藏
+      reportRefresh: true,
     };
   },
   computed: {},
@@ -138,6 +162,20 @@ export default {
       }
       return val;
     },
+    // --------------弹框点击确定按钮
+    registerBtn() {
+      this.$refs.childReport.resetReport();
+      // 清空父元素的数据
+      Object.assign(this.$data, this.$options.data());
+      // 显示上报信息的子组件
+      this.showRegisterBox = false;
+      // 强制刷新子组件
+      this.reportRefresh = false;
+      this.$nextTick(() => {
+        this.reportRefresh = true;
+        this.active = 1;
+      });
+    },
   },
   mounted() {},
 };
@@ -156,3 +194,4 @@ export default {
   }
 }
 </style>
+

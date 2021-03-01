@@ -67,6 +67,7 @@
         <!-- 种植面积 -->
         <van-field
           v-model="plantArea"
+          type="number"
           name="plantArea"
           placeholder="请输入种植面积（亩）"
           class="bg-gray-f2 mt-24"
@@ -75,6 +76,7 @@
         <!-- 收获面积 -->
         <van-field
           v-model="harvestArea"
+          type="number"
           name="harvestArea"
           placeholder="请输入收获面积（亩）"
           class="bg-gray-f2 mt-24"
@@ -83,6 +85,7 @@
         <!-- 总产量 -->
         <van-field
           v-model="totalOutput"
+          type="number"
           name="totalOutput"
           placeholder="请输入总产量（吨）"
           class="bg-gray-f2 mt-24"
@@ -91,6 +94,7 @@
         <!-- 投入成本 -->
         <van-field
           v-model="inputCost"
+          type="number"
           name="inputCost"
           placeholder="请输入投入成本（万元）"
           class="bg-gray-f2 mt-24"
@@ -99,6 +103,7 @@
         <!-- 收货价 -->
         <van-field
           v-model="receivingPrice"
+          type="number"
           name="receivingPrice"
           placeholder="请输入收货价（元/公斤）"
           class="bg-gray-f2 mt-24"
@@ -107,6 +112,7 @@
         <!-- 批发价 -->
         <van-field
           v-model="tradePrice"
+          type="number"
           name="tradePrice"
           placeholder="请输入批发价（元/公斤）"
           class="bg-gray-f2 mt-24"
@@ -115,6 +121,7 @@
         <!-- 零售价 -->
         <van-field
           v-model="retailPrice"
+          type="number"
           name="retailPrice"
           placeholder="请输入零售价（元/公斤）"
           class="bg-gray-f2 mt-24"
@@ -123,6 +130,7 @@
         <!-- 总产值 -->
         <van-field
           v-model="totalOutputValue"
+          type="number"
           name="totalOutputValue"
           placeholder="请输入总产值（万元）"
           class="bg-gray-f2 mt-24"
@@ -198,8 +206,15 @@ export default {
   methods: {
     // --------------提交按钮
     onSubmit(values) {
+      // 提交请求
       console.log("submit", values);
+      // 请求成功后弹框
+      this.$emit("show_box");
     },
+    // --------------重置当前的数据
+    resetReport(){
+      Object.assign(this.$data, this.$options.data())
+    }
   },
   mounted() {},
 };

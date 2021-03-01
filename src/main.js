@@ -60,7 +60,7 @@ import {
   SwipeCell,
   Badge,
   Picker,
-  DatetimePicker
+  DatetimePicker,
 } from "vant";
 Vue.use(Button);
 Vue.use(Tabbar);

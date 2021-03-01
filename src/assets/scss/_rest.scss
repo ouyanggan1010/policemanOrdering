@@ -161,12 +161,15 @@ $whPer: (1, 2, 3, 4, 5);
 }
 //------------------------------line-height
 $lineH: 10;
-@while $lineH < 300 {
+@while $lineH < 500 {
     .lineH-#{$lineH} {
         line-height: $lineH * $base-size;
     }
     .heightDiv-#{$lineH} {
         height: $lineH * $base-size;
+    }
+    .widthDiv-#{$lineH} {
+        width: $lineH * $base-size;
     }
     $lineH: $lineH + 2;
 }

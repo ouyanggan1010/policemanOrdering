@@ -3,28 +3,31 @@ $base-size: 1px;
 
 //------------------------------定义颜色
 $colors: (
-    "white": #fff,
-    "black": #000,
-    "black-31": #313131,
-    "black-61": #616161,
-    "black-91": #919191,
-    "green-88":#239688,
-    "green-6b":#00b96b,
-    "gray-c8":#c8c8c8,
-    "gray-e5":#e5e5e5,
-    "gray-f2":#f2f2f2,
-    "transparent":transparent,
-    "red-4e":#f14e4e
+  "white": #fff,
+  "black": #000,
+  "black-31": #313131,
+  "black-61": #616161,
+  "black-91": #919191,
+  "green-88": #239688,
+  "green-6b": #00b96b,
+  "gray-c8": #c8c8c8,
+  "gray-e5": #e5e5e5,
+  "gray-f2": #f2f2f2,
+  "transparent": transparent,
+  "red-4e": #f14e4e,
+  "red-84": #dc6884,
+  "blue-e5": #03bfe5,
+  "yellow-4b": #e9a94b,
 );
 //------------------------------spacing
 //.mt-0 => margin-top level 1
 $spacing-types: (
-    "m": margin,
-    "p": padding,
+  "m": margin,
+  "p": padding,
 );
 $spacing-directions: (
-    "t": top,
-    "b": bottom,
-    "r": right,
-    "l": left,
+  "t": top,
+  "b": bottom,
+  "r": right,
+  "l": left,
 );

@@ -46,6 +46,16 @@ const routes = [
       headTitle: "服务",
     },
   },
+  // --------------------------------农机购置补贴
+  {
+    path: "/serviceSubsidy",
+    name: "ServiceSubsidy",
+    component: () => import("../views/ServiceSubsidy.vue"),
+    meta: {
+      headShow: true,
+      headTitle: "农机购置补贴",
+    },
+  },
   // --------------------------------问答
   {
     path: "/qa",

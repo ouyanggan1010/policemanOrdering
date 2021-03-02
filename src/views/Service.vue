@@ -7,8 +7,10 @@
         v-for="(item, index) in iconsText"
         :key="index"
       >
-        <van-image width="5rem" height="5rem" fit="contain" :src="item.pic" />
-        <div class="fs-72 text-white mt-120">{{item.title}}</div>
+        <router-link :to="item.link">
+          <van-image width="5rem" height="5rem" fit="contain" :src="item.pic" />
+          <div class="fs-72 text-white mt-120">{{ item.title }}</div>
+        </router-link>
       </swiper-slide>
     </swiper>
   </div>
@@ -18,7 +20,7 @@
 import { swiper, swiperSlide } from "vue-awesome-swiper";
 import "swiper/dist/css/swiper.css";
 export default {
-  name: "index",
+  name: "Service",
   components: {
     swiper,
     swiperSlide,
@@ -38,20 +40,20 @@ export default {
         {
           title: "农机驾驶证",
           pic: require("../assets/images/driverLicense.png"),
-          bgColor:"bg-yellow-4b",
-          link:""
+          bgColor: "bg-yellow-4b",
+          link: "",
         },
         {
           title: "农机购置补贴",
           pic: require("../assets/images/subsidy.png"),
-          bgColor:"bg-blue-e5",
-          link:""
+          bgColor: "bg-blue-e5",
+          link: "/serviceSubsidy",
         },
         {
           title: "农机档案",
           pic: require("../assets/images/file.png"),
-          bgColor:"bg-red-84",
-          link:""
+          bgColor: "bg-red-84",
+          link: "",
         },
       ],
     };

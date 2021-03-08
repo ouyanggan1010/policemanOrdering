@@ -22,86 +22,177 @@
           <div
             class="top bg-green-6b heightDiv-88 fs-36 text-white fw-6 d-flex ai-center jc-center"
           >
-            上报时间：{{list.date}}
+            上报时间：{{ list.date }}
           </div>
-          <div class="bg-white box-b px-8 borderLists">
+          <div class="bg-white box-b px-8 py-12 borderLists">
+            <!-- 所在市县 -->
             <div
-              class="heightDiv-88 d-flex jc-between fs-36 text-black-31 fw-6 lineH-88 text-center"
+              class="d-flex jc-between fs-36 text-black-31 fw-6 text-center minH"
             >
-              <div class="widthDiv-420 border-ld">所在市县</div>
-              <div class="flex-1">{{list.city}}</div>
+              <div class="widthDiv-420 border-ld d-flex ai-center jc-center">
+                所在市县
+              </div>
+              <div
+                class="flex-1 py-10 px-10 d-flex ai-center jc-center wordWrap"
+              >
+                {{ list.city }}
+              </div>
             </div>
+            <!-- 土地坐落位置 -->
             <div
-              class="heightDiv-88 d-flex jc-between fs-36 text-black-31 fw-6 lineH-88 text-center"
+              class="d-flex jc-between fs-36 text-black-31 fw-6 text-center minH"
             >
-              <div class="widthDiv-420 border-ld">土地坐落位置</div>
-              <div class="flex-1">{{list.address}}</div>
+              <div class="widthDiv-420 border-ld d-flex ai-center jc-center">
+                土地坐落位置
+              </div>
+              <div
+                class="flex-1 py-10 px-10 d-flex ai-center jc-center wordWrap"
+              >
+                {{ list.address }}
+              </div>
             </div>
+            <!-- 种植品种 -->
             <div
-              class="heightDiv-88 d-flex jc-between fs-36 text-black-31 fw-6 lineH-88 text-center"
+              class="d-flex jc-between fs-36 text-black-31 fw-6 text-center minH"
             >
-              <div class="widthDiv-420 border-ld">种植品种</div>
-              <div class="flex-1">{{list.varieties}}</div>
+              <div class="widthDiv-420 border-ld d-flex ai-center jc-center">
+                种植品种
+              </div>
+              <div
+                class="flex-1 py-10 px-10 d-flex ai-center jc-center wordWrap"
+              >
+                {{ list.varieties }}
+              </div>
             </div>
+            <!-- 种植时间 -->
             <div
-              class="heightDiv-88 d-flex jc-between fs-36 text-black-31 fw-6 lineH-88 text-center"
+              class="d-flex jc-between fs-36 text-black-31 fw-6 text-center minH"
             >
-              <div class="widthDiv-420 border-ld">种植时间</div>
-              <div class="flex-1">{{list.plantDate}}</div>
+              <div class="widthDiv-420 border-ld d-flex ai-center jc-center">
+                种植时间
+              </div>
+              <div
+                class="flex-1 py-10 px-10 d-flex ai-center jc-center wordWrap"
+              >
+                {{ list.plantDate }}
+              </div>
             </div>
+            <!-- 收获时间 -->
             <div
-              class="heightDiv-88 d-flex jc-between fs-36 text-black-31 fw-6 lineH-88 text-center"
+              class="d-flex jc-between fs-36 text-black-31 fw-6 text-center minH"
             >
-              <div class="widthDiv-420 border-ld">收获时间</div>
-              <div class="flex-1">{{list.harvestDate}}</div>
+              <div class="widthDiv-420 border-ld d-flex ai-center jc-center">
+                收获时间
+              </div>
+              <div
+                class="flex-1 py-10 px-10 d-flex ai-center jc-center wordWrap"
+              >
+                {{ list.harvestDate }}
+              </div>
             </div>
+            <!-- 种植面积（亩） -->
             <div
-              class="heightDiv-88 d-flex jc-between fs-36 text-black-31 fw-6 lineH-88 text-center"
+              class="d-flex jc-between fs-36 text-black-31 fw-6 text-center minH"
             >
-              <div class="widthDiv-420 border-ld">种植面积（亩）</div>
-              <div class="flex-1">{{list.plantArea}}</div>
+              <div class="widthDiv-420 border-ld d-flex ai-center jc-center">
+                种植面积（亩）
+              </div>
+              <div
+                class="flex-1 py-10 px-10 d-flex ai-center jc-center wordWrap"
+              >
+                {{ list.plantArea }}
+              </div>
             </div>
+            <!-- 收获面积（亩） -->
             <div
-              class="heightDiv-88 d-flex jc-between fs-36 text-black-31 fw-6 lineH-88 text-center"
+              class="d-flex jc-between fs-36 text-black-31 fw-6 text-center minH"
             >
-              <div class="widthDiv-420 border-ld">收获面积（亩）</div>
-              <div class="flex-1">{{list.harvestArea}}</div>
+              <div class="widthDiv-420 border-ld d-flex ai-center jc-center">
+                收获面积（亩）
+              </div>
+              <div
+                class="flex-1 py-10 px-10 d-flex ai-center jc-center wordWrap"
+              >
+                {{ list.harvestArea }}
+              </div>
             </div>
+            <!-- 总产量（吨） -->
             <div
-              class="heightDiv-88 d-flex jc-between fs-36 text-black-31 fw-6 lineH-88 text-center"
+              class="d-flex jc-between fs-36 text-black-31 fw-6 text-center minH"
             >
-              <div class="widthDiv-420 border-ld">总产量（吨）</div>
-              <div class="flex-1">{{list.totalOutput}}</div>
+              <div class="widthDiv-420 border-ld d-flex ai-center jc-center">
+                总产量（吨）
+              </div>
+              <div
+                class="flex-1 py-10 px-10 d-flex ai-center jc-center wordWrap"
+              >
+                {{ list.totalOutput }}
+              </div>
             </div>
+            <!-- 投入成本（万元） -->
             <div
-              class="heightDiv-88 d-flex jc-between fs-36 text-black-31 fw-6 lineH-88 text-center"
+              class="d-flex jc-between fs-36 text-black-31 fw-6 text-center minH"
             >
-              <div class="widthDiv-420 border-ld">投入成本（万元）</div>
-              <div class="flex-1">{{list.inputCost}}</div>
+              <div class="widthDiv-420 border-ld d-flex ai-center jc-center">
+                投入成本（万元）
+              </div>
+              <div
+                class="flex-1 py-10 px-10 d-flex ai-center jc-center wordWrap"
+              >
+                {{ list.inputCost }}
+              </div>
             </div>
+            <!-- 批发价（元/公斤） -->
             <div
-              class="heightDiv-88 d-flex jc-between fs-36 text-black-31 fw-6 lineH-88 text-center"
+              class="d-flex jc-between fs-36 text-black-31 fw-6 text-center minH"
             >
-              <div class="widthDiv-420 border-ld">批发价（元/公斤）</div>
-              <div class="flex-1">{{list.tradePrice}}</div>
+              <div class="widthDiv-420 border-ld d-flex ai-center jc-center">
+                批发价（元/公斤）
+              </div>
+              <div
+                class="flex-1 py-10 px-10 d-flex ai-center jc-center wordWrap"
+              >
+                {{ list.tradePrice }}
+              </div>
             </div>
+            <!-- 收货价（元/公斤） -->
             <div
-              class="heightDiv-88 d-flex jc-between fs-36 text-black-31 fw-6 lineH-88 text-center"
+              class="d-flex jc-between fs-36 text-black-31 fw-6 text-center minH"
             >
-              <div class="widthDiv-420 border-ld">收货价（元/公斤）</div>
-              <div class="flex-1">{{list.receivingPrice}}</div>
+              <div class="widthDiv-420 border-ld d-flex ai-center jc-center">
+                收货价（元/公斤）
+              </div>
+              <div
+                class="flex-1 py-10 px-10 d-flex ai-center jc-center wordWrap"
+              >
+                {{ list.receivingPrice }}
+              </div>
             </div>
+            <!-- 零售价（元/公斤） -->
             <div
-              class="heightDiv-88 d-flex jc-between fs-36 text-black-31 fw-6 lineH-88 text-center"
+              class="d-flex jc-between fs-36 text-black-31 fw-6 text-center minH"
             >
-              <div class="widthDiv-420 border-ld">零售价（元/公斤）</div>
-              <div class="flex-1">{{list.retailPrice}}</div>
+              <div class="widthDiv-420 border-ld d-flex ai-center jc-center">
+                零售价（元/公斤）
+              </div>
+              <div
+                class="flex-1 py-10 px-10 d-flex ai-center jc-center wordWrap"
+              >
+                {{ list.retailPrice }}
+              </div>
             </div>
+            <!-- 总产值（万元） -->
             <div
-              class="heightDiv-88 d-flex jc-between fs-36 text-black-31 fw-6 lineH-88 text-center"
+              class="d-flex jc-between fs-36 text-black-31 fw-6 text-center minH"
             >
-              <div class="widthDiv-420 border-ld">总产值（万元）</div>
-              <div class="flex-1">{{list.totalOutputValue}}</div>
+              <div class="widthDiv-420 border-ld d-flex ai-center jc-center">
+                总产值（万元）
+              </div>
+              <div
+                class="flex-1 py-10 px-10 d-flex ai-center jc-center wordWrap"
+              >
+                {{ list.totalOutputValue }}
+              </div>
             </div>
           </div>
         </router-link>
@@ -194,7 +285,7 @@ export default {
 </script>
 <style lang="scss" rel="stylesheet/scss">
 .informationReported {
-  height: calc(100vh - 132.47px - 120px);
+  height: calc(100vh - 132.47px - 126px);
   .listMinH {
     height: 100%;
     overflow-y: auto;
@@ -203,7 +294,7 @@ export default {
     padding: 0 32px;
     box-sizing: border-box;
     > .card {
-      margin-top: 50px;
+      padding-top: 50px;
       box-sizing: border-box;
       .borderLists {
         border-left: 0.028rem dashed #239688;
@@ -219,6 +310,13 @@ export default {
           &:nth-child(even) {
             background-color: #f2f2f2;
           }
+        }
+        .minH {
+          min-height: 88px;
+        }
+        .wordWrap {
+          word-wrap: break-word;
+          word-break: break-all;
         }
       }
     }

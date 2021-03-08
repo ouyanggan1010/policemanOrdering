@@ -41,7 +41,7 @@ export default {
           title: "农机驾驶证",
           pic: require("../assets/images/driverLicense.png"),
           bgColor: "bg-yellow-4b",
-          link: "",
+          link: "/serviceDriverLicense",
         },
         {
           title: "农机购置补贴",
@@ -53,7 +53,7 @@ export default {
           title: "农机档案",
           pic: require("../assets/images/file.png"),
           bgColor: "bg-red-84",
-          link: "",
+          link: "/serviceFile",
         },
       ],
     };

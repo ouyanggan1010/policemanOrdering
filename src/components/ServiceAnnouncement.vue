@@ -14,7 +14,7 @@
       >
         <router-link
           tag="div"
-          to="/questionDetails"
+          :to="getLink(list)"
           class="card"
           v-for="(list, index) in lists"
           :key="index"
@@ -53,8 +53,8 @@
             <div
               class="van-hairline--top d-flex ai-center box-b py-30 fs-36 text-black-31 fw-6"
             >
-              <div class="widthPer-2">投入资金（中央）：旋耕机</div>
-              <div class="widthPer-2">投入资金（省）：1GQNKG-200</div>
+              <div class="widthPer-2">投入资金(中央)：42154687</div>
+              <div class="widthPer-2">投入资金(省)：42154687</div>
             </div>
           </div>
           <!-- 补贴产品查询 -->
@@ -66,15 +66,17 @@
           </div>
           <div class="bg-white box-b px-30" v-if="active == 'search'">
             <div class="d-flex ai-center box-b py-30 fs-36 text-black-31 fw-6">
-              <div class="widthPer-2">产品名称：海口市</div>
+              <div class="widthPer-2">产品名称：海口市海口市</div>
               <div class="widthPer-2">规格型号：已结算</div>
+            </div>
+            <div
+              class="van-ellipsis van-hairline--top box-b py-30 fs-36 text-black-31 fw-6"
+            >
+              生产企业：旋耕机旋耕机旋耕机旋耕机旋耕机旋耕机旋耕机耕机旋耕机旋耕耕机旋耕机旋耕
             </div>
             <div
               class="van-hairline--top d-flex ai-center box-b py-30 fs-36 text-black-31 fw-6"
             >
-              生产企业：旋耕机旋耕机旋耕机旋耕机旋耕机旋耕机旋耕机
-            </div>
-            <div class="van-hairline--top d-flex ai-center box-b py-30 fs-36 text-black-31 fw-6">
               <div class="widthPer-2">中央补贴额：海口市</div>
               <div class="widthPer-2">省补贴额：已结算</div>
             </div>
@@ -108,20 +110,19 @@ export default {
   },
   watch: {
     type(val) {
-      console.log(val)
       this.active = val;
     },
   },
   computed: {},
   methods: {
     onLoad() {
-      const total = this.count + 1;
       setTimeout(() => {
         if (this.refreshing) {
           this.lists = [];
           this.refreshing = false;
           this.count = 0;
         }
+        const total = this.count + 1;
         // 请求数据
         for (let i = this.count; i < total; i++) {
           this.lists.push({
@@ -132,6 +133,7 @@ export default {
         this.loading = false;
         // 请求的数据为空的时候
         if (this.lists.length >= 3) {
+          console.log(this.lists.length);
           this.finished = true;
         }
       }, 1000);
@@ -143,6 +145,16 @@ export default {
       this.loading = true;
       // 重新加载数据
       this.onLoad();
+    },
+    // ------------跳转
+    getLink() {
+      if (this.active == "announcement") {
+        return "/serviceAnnouncement";
+      } else if (this.active == "situation") {
+        return "/serviceSituation";
+      } else if (this.active == "search") {
+        return '/serviceSearch'
+      }
     },
   },
   mounted() {

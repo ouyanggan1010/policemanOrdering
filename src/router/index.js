@@ -56,6 +56,56 @@ const routes = [
       headTitle: "农机购置补贴",
     },
   },
+  // --------------------------------农机购置补贴--补贴情况公告
+  {
+    path: "/serviceAnnouncement",
+    name: "ServiceAnnouncement",
+    component: () => import("../views/ServiceAnnouncement.vue"),
+    meta: {
+      headShow: true,
+      headTitle: "补贴情况公告",
+    },
+  },
+  // --------------------------------农机购置补贴--资金使用情况
+  {
+    path: "/serviceSituation",
+    name: "ServiceSituation",
+    component: () => import("../views/ServiceSituation.vue"),
+    meta: {
+      headShow: true,
+      headTitle: "资金使用情况",
+    },
+  },
+  // --------------------------------农机购置补贴--补贴产品查询
+  {
+    path: "/serviceSearch",
+    name: "ServiceSearch",
+    component: () => import("../views/ServiceSearch.vue"),
+    meta: {
+      headShow: true,
+      headTitle: "补贴产品查询",
+    },
+  },
+  // --------------------------------农机档案
+  {
+    path: "/serviceFile",
+    name: "ServiceFile",
+    component: () => import("../views/ServiceFile.vue"),
+    meta: {
+      headShow: true,
+      headTitle: "农机档案",
+    },
+  },
+  // --------------------------------农机驾驶证
+  {
+    path: "/serviceDriverLicense",
+    name: "ServiceDriverLicense",
+    component: () => import("../views/ServiceDriverLicense.vue"),
+    meta: {
+      headShow: true,
+      headTitle: "农机驾驶证",
+    },
+  },
   // --------------------------------问答
   {
     path: "/qa",

@@ -347,6 +347,16 @@ const routes = [
       headTitle: "农户种植信息采集",
     },
   },
+  // --------------------------------农产品价格
+  {
+    path: "/productPrices",
+    name: "ProductPrices",
+    component: () => import("../views/ProductPrices.vue"),
+    meta: {
+      headShow: true,
+      headTitle: "农产品价格",
+    },
+  },
 ];
 
 const router = new VueRouter({

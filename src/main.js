@@ -61,6 +61,7 @@ import {
   Badge,
   Picker,
   DatetimePicker,
+  Empty
 } from "vant";
 Vue.use(Button);
 Vue.use(Tabbar);
@@ -98,6 +99,7 @@ Vue.use(SwipeCell);
 Vue.use(Badge);
 Vue.use(Picker);
 Vue.use(DatetimePicker);
+Vue.use(Empty);
 
 Vue.prototype.$Toast = Toast;
 Vue.prototype.$Dialog = Dialog;

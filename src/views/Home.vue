@@ -147,7 +147,7 @@ export default {
           title: "农产品价格",
           tips: "每日农产品价格信息",
           icon: "myIcon-agriculturalPrice",
-          link: "/service",
+          link: "/productPrices",
         },
         {
           title: "农产品检测",

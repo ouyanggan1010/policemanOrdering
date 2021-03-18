@@ -12,9 +12,7 @@
         @load="onLoad"
         class="cards"
       >
-        <router-link
-          tag="div"
-          to="/questionDetails"
+        <div
           class="card"
           v-for="(list, index) in lists"
           :key="index"
@@ -78,7 +76,7 @@
               </div>
             </div>
           </div>
-        </router-link>
+        </div>
       </van-list>
     </van-pull-refresh>
   </div>

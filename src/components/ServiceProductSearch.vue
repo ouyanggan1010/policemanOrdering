@@ -1,10 +1,10 @@
 <template>
-  <div class="serviceAnnouncement">
+  <div class="serviceProductSearch">
     <!-- 搜索 -->
     <van-search
-      v-model="serchValueOne"
+      v-model="serchValueTwo"
       shape="round"
-      placeholder="姓名/所在市"
+      placeholder="分档名称/产品名称/生产企业"
       class="van-hairline--top"
     />
     <van-pull-refresh
@@ -12,6 +12,7 @@
       v-model="refreshing"
       @refresh="onRefresh"
     >
+      <div class="fs-36 text-black-31 fw-6 text-center pb-20">以下数据单位为：(万元），统计截止日期：2018-05-20</div>
       <van-list
         v-model="loading"
         :finished="finished"
@@ -21,27 +22,32 @@
       >
         <router-link
           tag="div"
-          to="/serviceAnnouncement"
+          to="/serviceSearch"
           class="card"
           v-for="(list, index) in lists"
           :key="index"
         >
-          <!-- 补贴情况公告 -->
+          <!-- 补贴产品查询 -->
           <div
             class="heightDiv-88 bg-green-6b fs-36 text-white fw-6 pl-30 box-b d-flex ai-center"
           >
-            购机者姓名 ：王长经
+            分档名称：王长经
           </div>
           <div class="bg-white box-b px-30">
             <div class="d-flex ai-center box-b py-30 fs-36 text-black-31 fw-6">
-              <div class="widthPer-2">所在市：海口市</div>
-              <div class="widthPer-2">状态：已结算</div>
+              <div class="widthPer-2">产品名称：海口市海口市</div>
+              <div class="widthPer-2">规格型号：已结算</div>
+            </div>
+            <div
+              class="van-ellipsis van-hairline--top box-b py-30 fs-36 text-black-31 fw-6"
+            >
+              生产企业：旋耕机旋耕机旋耕机旋耕机旋耕机旋耕机旋耕机耕机旋耕机旋耕耕机旋耕机旋耕
             </div>
             <div
               class="van-hairline--top d-flex ai-center box-b py-30 fs-36 text-black-31 fw-6"
             >
-              <div class="widthPer-2">机具品目：旋耕机</div>
-              <div class="widthPer-2">机具型号：1GQNKG-200</div>
+              <div class="widthPer-2">中央补贴额：海口市</div>
+              <div class="widthPer-2">省补贴额：已结算</div>
             </div>
           </div>
         </router-link>
@@ -51,7 +57,7 @@
 </template>
 <script>
 export default {
-  name: "ServiceAnnouncement",
+  name: "ServiceProductSearch",
   props: {},
   data() {
     return {
@@ -65,10 +71,11 @@ export default {
       lists: [],
       // 列表总数
       count: 0,
-      /// 补贴情况公告--搜索
-      serchValueOne: "",
+      // 补贴产品查询--搜索
+      serchValueTwo: "",
     };
   },
+  watch: {},
   computed: {},
   methods: {
     onLoad() {
@@ -88,7 +95,7 @@ export default {
         }
         this.loading = false;
         // 请求的数据为空的时候
-        if (this.lists.length >= 3) {
+        if (this.lists.length >= 2) {
           console.log(this.lists.length);
           this.finished = true;
         }
@@ -107,7 +114,7 @@ export default {
 };
 </script>
 <style lang="scss" rel="stylesheet/scss">
-.serviceAnnouncement {
+.serviceProductSearch {
   height: calc(100vh - 132.47px - 126.72px);
   .filterQa {
     position: relative;
@@ -134,7 +141,7 @@ export default {
   .listMinH {
     height: calc(100% - 125px);
     overflow-y: auto;
-    padding-top: 50px;
+    padding-top: 40px;
     box-sizing: border-box;
   }
   .cards {

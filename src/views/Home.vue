@@ -153,7 +153,7 @@ export default {
           title: "农产品检测",
           tips: "农产品质量安全检测",
           icon: "myIcon-agriculturalTesting",
-          link: "/",
+          link: "/productDetect",
         },
       ],
       // 最新资讯

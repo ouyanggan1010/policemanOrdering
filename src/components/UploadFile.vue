@@ -4,6 +4,8 @@
       :round="false"
       close-on-popstate
       v-model="actionShowInside"
+      get-container="body"
+      class="uploadFileSheet"
     >
       <!-- 拍照 -->
       <van-uploader
@@ -20,7 +22,7 @@
       >
         <div class="fs-42 text-black-31 fw-6">从相册中选择</div>
       </van-uploader>
-      <div class="line"></div>
+      <div class="lineDiv"></div>
       <div
         class="fs-42 text-black-31 fw-6 box-b py-40 text-center"
         @click="actionShowInside = false"
@@ -59,11 +61,11 @@ export default {
 };
 </script>
 <style lang="scss" rel="stylesheet/scss">
-.uploadFile {
+.uploadFileSheet {
   .van-overlay {
     background-color: rgba(0, 0, 0, 0.2);
   }
-  .line {
+  .lineDiv {
     width: 100%;
     height: 24px;
     background-color: #f2f2f2;

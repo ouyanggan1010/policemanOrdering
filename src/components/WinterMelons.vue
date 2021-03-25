@@ -1,109 +1,17 @@
 <template>
   <div class="winterMelons">
-    <!-- 所有下拉菜单 -->
-    <div class="d-flex ai-center jc-between bg-white van-hairline--top">
-      <!-- 下拉菜单1 -->
-      <van-popover
-        class="qaPopoverList"
-        v-model="showPopoverOne"
-        trigger="click"
-        overlay
-      >
-        <template #reference>
-          <div
-            class="filterQa active d-flex ai-center jc-between box-b pl-50 pr-74"
-          >
-            <div class="fs-36 fw-6 text-black-31">
-              {{ selectedOne ? selectedOne : "品种名称" }}
-            </div>
-            <van-icon class="text-gray-c8 fs-52" name="arrow-down" />
-          </div>
-        </template>
-        <div class="popoverclassLists box-b px-24">
-          <div
-            class="popoverList van-hairline--top popoverWidth1 fs-36 fw-6 text-black-31 d-flex jc-between ai-center px-22"
-            v-for="(popoverOne, i) in popoverArryOne"
-            :key="popoverOne"
-            @click="changePopover(i, 1)"
-          >
-            <div>{{ popoverOne }}</div>
-            <span
-              v-if="activeOne && activeOne == i"
-              class="myIcon-checkBlue"
-            ></span>
-          </div>
-        </div>
-      </van-popover>
-      <!-- 下拉菜单2 -->
-      <van-popover
-        class="qaPopoverList"
-        v-model="showPopoverTwo"
-        trigger="click"
-        overlay
-      >
-        <template #reference>
-          <div class="filterQa d-flex ai-center jc-between box-b pl-50 pr-74">
-            <div class="fs-36 fw-6 text-black-31">
-              {{ selectedTwo ? selectedTwo : "市场" }}
-            </div>
-            <van-icon class="text-gray-c8 fs-52" name="arrow-down" />
-          </div>
-        </template>
-        <div class="popoverclassLists box-b px-24 py-20">
-          <div
-            class="popoverList van-hairline--top popoverWidth1 fs-36 fw-6 text-black-31 d-flex jc-between ai-center px-22"
-            v-for="(popoverTwo, j) in popoverArryTwo"
-            :key="popoverTwo"
-            @click="changePopover(j, 2)"
-          >
-            <div>{{ popoverTwo }}</div>
-            <span
-              v-if="activeTwo && activeTwo == j"
-              class="myIcon-checkBlue"
-            ></span>
-          </div>
-        </div>
-      </van-popover>
-    </div>
+    <!-- 下拉菜单 -->
+    <DropDownMenu
+      :dataOne="popoverArryOne"
+      :dataTwo="popoverArryTwo"
+      :nameOne="popoverNameOne"
+      :nameTwo="popoverNameTwo"
+      @event_arry="onPopover"
+    />
     <!-- 日期 -->
-    <van-form
-      @submit="onSubmit"
-      class="mt-24 bg-white d-flex jc-center ai-center box-b py-24"
-    >
-      <van-field
-        class="fieldInp"
-        :border="false"
-        readonly
-        v-model="startDate"
-        input-align="center"
-        name="startDate"
-        placeholder="开始日期"
-        @click="$emit('open_sdate')"
-      />
-      <div class="text-black-31 fs-36 mx-38">至</div>
-      <van-field
-        class="fieldInp"
-        :border="false"
-        readonly
-        v-model="endDate"
-        input-align="center"
-        name="endDate"
-        placeholder="结束日期"
-        @click="$emit('open_edate')"
-      />
-      <div class="subBtn ml-50">
-        <van-button
-          color="#fb9801"
-          block
-          size="small"
-          type="info"
-          native-type="submit"
-          >查询</van-button
-        >
-      </div>
-    </van-form>
+    <DateLinkage @event_search="onDateSearch" />
     <!-- 表格 -->
-    <div class="mt-50 box-b px-30" v-if="tableList.length > 0">
+    <div class="py-50 box-b px-30 tableHight" v-if="tableList.length > 0">
       <div>
         <div class="minH box-b py-10 px-8 bg-green-6b d-flex fs-32 text-white">
           <div
@@ -160,42 +68,22 @@
   </div>
 </template>
 <script>
+import DropDownMenu from "../components/DropDownMenu.vue";
+import DateLinkage from "../components/DateLinkage.vue";
 export default {
-  name: "WinterMelons",
-  props: {
-    melonsObj: Object,
-  },
-  watch: {
-    "melonsObj.startDate"(val) {
-      this.startDate = val;
-    },
-    "melonsObj.endDate"(val) {
-      this.endDate = val;
-    },
+  name: "PerennialVegetables",
+  components: {
+    DropDownMenu,
+    DateLinkage,
   },
   data() {
     return {
-      // ------------------品种名称
-      // 下拉菜单
-      showPopoverOne: false,
-      // 勾选项
-      activeOne: "",
-      // 数据
+      // ------------------下拉菜单1数据
       popoverArryOne: ["木瓜", "番石榴", "莲雾"],
-      // 选中项
-      selectedOne: "",
-      // ------------------市场
-      // 下拉菜单
-      showPopoverTwo: false,
-      // 勾选项
-      activeTwo: "",
-      // 数据
+      popoverNameOne: "品种名称",
+      // ------------------下拉菜单2数据
       popoverArryTwo: ["城东市场", "坡博市场", "六和市场"],
-      // 选中项
-      selectedTwo: "",
-      // ------------------搜索
-      startDate: "",
-      endDate: "",
+      popoverNameTwo: "市场",
       // ------------------表格内容
       tableList: [
         {
@@ -210,47 +98,23 @@ export default {
   },
   computed: {},
   methods: {
-    // --------------------------下来菜单选项的点击事件
-    changePopover(index, type) {
-      if (type == "1") {
-        this.activeOne = index + "";
-        this.showPopoverOne = false;
-        this.selectedOne = this.popoverArryOne[index];
-      } else {
-        this.activeTwo = index + "";
-        this.showPopoverTwo = false;
-        this.selectedTwo = this.popoverArryTwo[index];
-      }
+    // --------------------------下拉菜单选中提交请求
+    onPopover(data) {
+      console.log(data);
     },
-    // --------------------------搜索日期提交
-    onSubmit() {},
+    // --------------------------日期范围搜索提交请求
+    onDateSearch(data) {
+      console.log(data);
+    },
   },
   mounted() {},
 };
 </script>
 <style lang="scss" rel="stylesheet/scss">
 .winterMelons {
-  .filterQa {
-    position: relative;
-    height: 124px;
-    &.active::after {
-      position: absolute;
-      box-sizing: border-box;
-      content: " ";
-      pointer-events: none;
-      top: 0;
-      right: -50%;
-      bottom: 0;
-      left: -50%;
-      border: 0 solid #ebedf0;
-      -webkit-transform: scale(0.5);
-      transform: scale(0.5);
-      border-right-width: 0.02667rem;
-    }
-  }
-  .qaPopoverList {
-    width: 50%;
-    box-sizing: border-box;
+  .tableHight{
+    height: calc(100vh - 132.47px - 126.72px - 125px - 140.13px - 24px);
+    overflow-y: auto;
   }
   .subBtn {
     width: 138px;

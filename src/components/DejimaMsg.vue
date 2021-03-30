@@ -283,34 +283,6 @@ export default {
   .colItem {
     font-size: 32px;
     margin-top: 24px;
-    .module {
-      background-color: red;
-      border-radius: 10px;
-      .top {
-        background-color: rgba($color: #ffffff, $alpha: 0.2);
-      }
-      &.greenOne {
-        background-color: #81c784;
-      }
-      &.yellow {
-        background-color: #ffb74d;
-      }
-      &.greenTwo {
-        background-color: #4db6ac;
-      }
-      &.red {
-        background-color: #ef9a9a;
-      }
-      &.blueOne {
-        background-color: #64a8f0;
-      }
-      &.blueTwo {
-        background-color: #7289ab;
-      }
-    }
-    .colHeight {
-      height: 114px;
-    }
   }
   .tabsCard {
     .van-tabs__wrap {
